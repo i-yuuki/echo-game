@@ -65,6 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e341906a8622e444cbcd3e8b5922e506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health:
+    value: 4
+  maxHealth: 4
   reflectBullet: {fileID: 0}
 --- !u!114 &3682477567055064201
 MonoBehaviour:
