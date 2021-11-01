@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Echo.Misc{
     public sealed class LoadSceneOnTrigger : MonoBehaviour{
@@ -8,7 +7,7 @@ namespace Echo.Misc{
 
         private void OnTriggerEnter(Collider other){
             if(other.CompareTag("Player")){
-                SceneManager.LoadScene(sceneName);
+                GameManager.Instance.LoadScene(sceneName);
             }
         }
 
