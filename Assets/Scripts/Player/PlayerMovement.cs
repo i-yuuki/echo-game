@@ -7,6 +7,7 @@ namespace Echo.Player{
         [SerializeField] private float rotationSpeed;
         [SerializeField] private float gravity = -9.81f;
         [SerializeField] private CharacterController characterController;
+        [SerializeField] private Animator animator;
 
         private GameInput inputActions;
         private Vector3 velocity;
@@ -39,6 +40,8 @@ namespace Echo.Player{
             var input = inputActions.Player.Move.ReadValue<Vector2>();
             var movement = right.normalized * input.x + forward.normalized * input.y;
             characterController.Move(movement * walkSpeed * Time.deltaTime);
+
+            animator.SetFloat("Walk", input.magnitude);
 
             velocity.y += gravity * Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);
