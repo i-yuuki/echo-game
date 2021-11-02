@@ -21,7 +21,7 @@ namespace Echo.Player{
             Health -= damage;
         }
 
-        public void ReflectBullet(EnemyBullet bullet){
+        public void ReflectBullet(BulletBase bullet){
             if(reflectBullet){
                 reflectBullet.ReflectBullet(bullet);
             }

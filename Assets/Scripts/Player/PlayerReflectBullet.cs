@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Echo.Enemy;
 
 namespace Echo.Player{
     public class PlayerReflectBullet : MonoBehaviour{
@@ -38,11 +37,11 @@ namespace Echo.Player{
             }
         }
 
-        public void ReflectBullet(EnemyBullet enemyBullet){
-            Destroy(enemyBullet.gameObject);
-            var bullet = Instantiate(bulletPrefab, enemyBullet.transform.position, Quaternion.identity);
-            bullet.Direction = enemyBullet.Shooter.transform.position - transform.position;
-            bullet.Speed = enemyBullet.Speed + bulletAcceleration;
+        public void ReflectBullet(BulletBase bulletToReflect){
+            Destroy(bulletToReflect.gameObject);
+            var bullet = Instantiate(bulletPrefab, bulletToReflect.transform.position, Quaternion.identity);
+            bullet.Direction = -bulletToReflect.Direction;
+            bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
         }
 
     }

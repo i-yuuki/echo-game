@@ -49,7 +49,7 @@ namespace Echo.Enemy{
         }
 
         void IReflectable.OnReflect(PlayerBase player){
-            player.ReflectBullet(this);
+            player.ReflectBullet(bullet);
         }
 
     }

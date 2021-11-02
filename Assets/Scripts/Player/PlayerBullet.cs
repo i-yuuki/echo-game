@@ -2,7 +2,7 @@
 
 namespace Echo.Player{
     [RequireComponent(typeof(BulletBase))]
-    public sealed class PlayerBullet : MonoBehaviour, IBullet{
+    public sealed class PlayerBullet : MonoBehaviour, IBullet, IReflectable{
 
         [SerializeField] private BulletBase bullet;
 
@@ -31,6 +31,10 @@ namespace Echo.Player{
                 bullet.ResetBounces();
                 attackable.OnPlayerBulletHit(this);
             }
+        }
+
+        void IReflectable.OnReflect(PlayerBase player){
+            player.ReflectBullet(bullet);
         }
 
     }
