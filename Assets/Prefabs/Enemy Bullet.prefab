@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5660264450883757295}
   - component: {fileID: 5660264450883757292}
   - component: {fileID: 5660264450883757293}
+  - component: {fileID: 4476234598770173526}
   - component: {fileID: 5660264450883757291}
   m_Layer: 8
   m_Name: Enemy Bullet
@@ -63,6 +64,21 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4476234598770173526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5660264450883757288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004018ba598fa1c4e9716ae277761902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  speed: 1
+  maxWallBounces: 5
 --- !u!114 &5660264450883757291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,8 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17813765fc9a2ab4cb4b1f4282d55f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 5660264450883757293}
-  speed: 1
+  bullet: {fileID: 4476234598770173526}
   lifetime: 5
 --- !u!1 &5660264450966129847
 GameObject:

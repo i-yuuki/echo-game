@@ -2,33 +2,31 @@
 using Echo.Player;
 
 namespace Echo.Enemy{
-    public sealed class EnemyBullet : MonoBehaviour, IReflectable{
+    [RequireComponent(typeof(BulletBase))]
+    public sealed class EnemyBullet : MonoBehaviour, IReflectable, IBullet{
 
-        [SerializeField] private new Rigidbody rigidbody;
-        [SerializeField] private float speed = 1;
+        [SerializeField] private BulletBase bullet;
         [SerializeField] private float lifetime = 5;
         private Transform shooter;
-        private Transform target;
-        private Vector3 direction;
 
         public Transform Shooter{
             get => shooter;
             set => shooter = value;
         }
         public Vector3 Direction{
-            get => direction;
-            set => direction = value.normalized;
+            get => bullet.Direction;
+            set => bullet.Direction = value;
         }
         public float Speed{
-            get => speed;
-            set => speed = value;
+            get => bullet.Speed;
+            set => bullet.Speed = value;
         }
 
-        void Start(){
-            rigidbody = GetComponentInChildren<Rigidbody>();
+        private void Reset(){
+            bullet = GetComponent<BulletBase>();
         }
 
-        void Update(){
+        private void Update(){
             if(!shooter){
                 Destroy(gameObject);
                 return;
@@ -40,8 +38,14 @@ namespace Echo.Enemy{
             }
         }
 
-        private void FixedUpdate(){
-            rigidbody.velocity = direction * speed;
+        private void OnCollisionEnter(Collision other){
+            var player = other.gameObject.GetComponent<PlayerBase>();
+            if(player == null){
+                bullet.Bounce(other.contacts[0].normal);
+            }else{
+                Destroy(gameObject);
+                player.Damage(1);
+            }
         }
 
         void IReflectable.OnReflect(PlayerBase player){

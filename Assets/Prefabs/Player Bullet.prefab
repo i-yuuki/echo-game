@@ -90,7 +90,8 @@ GameObject:
   - component: {fileID: 2361966717575998457}
   - component: {fileID: 2361966717575998458}
   - component: {fileID: 2361966717575998459}
-  - component: {fileID: 6631618112741317078}
+  - component: {fileID: 9035354265111761429}
+  - component: {fileID: 455717778730015856}
   m_Layer: 8
   m_Name: Player Bullet
   m_TagString: Untagged
@@ -142,7 +143,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6631618112741317078
+--- !u!114 &9035354265111761429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361966717575998462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004018ba598fa1c4e9716ae277761902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  speed: 1
+  maxWallBounces: 5
+--- !u!114 &455717778730015856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,6 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f03b9215a297324b9bd7657671b0e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  chargeLevel: 0
-  maxWallBounces: 4
+  bullet: {fileID: 9035354265111761429}

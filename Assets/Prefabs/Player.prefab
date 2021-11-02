@@ -114,7 +114,7 @@ MonoBehaviour:
   ringRadius: 0.85
   ringWidth: 0.6
   bulletAcceleration: 0.25
-  bulletPrefab: {fileID: 6631618112741317078, guid: 4f1f315893dd1924bbbb4f5b662a0049,
+  bulletPrefab: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
     type: 3}
 --- !u!95 &6502732797595125565
 Animator:
