@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UniRx;
+using Echo.Enemy;
 
 namespace Echo.Player{
     public class PlayerBase : MonoBehaviour{
@@ -18,6 +19,12 @@ namespace Echo.Player{
 
         public void Damage(int damage){
             Health -= damage;
+        }
+
+        public void ReflectBullet(EnemyBullet bullet){
+            if(reflectBullet){
+                reflectBullet.ReflectBullet(bullet);
+            }
         }
 
         void Start(){

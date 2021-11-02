@@ -45,7 +45,7 @@ namespace Echo.Enemy{
         }
 
         void IReflectable.OnReflect(PlayerBase player){
-            Destroy(gameObject);
+            player.ReflectBullet(this);
         }
 
     }

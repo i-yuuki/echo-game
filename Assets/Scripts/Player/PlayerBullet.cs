@@ -16,7 +16,10 @@ namespace Echo.Player{
             get => direction;
             set => direction = value.normalized;
         }
-
+        public float Speed{
+            get => speed;
+            set => speed = value;
+        }
         public int Damage => 1;
 
         void Start(){
