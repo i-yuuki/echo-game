@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Enemy;
 
 namespace Echo.Player{
-    public class PlayerBase : MonoBehaviour{
+    public class PlayerBase : MonoBehaviour, IPlayerBulletAttackable{
 
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private int maxHealth;
@@ -25,6 +25,10 @@ namespace Echo.Player{
             if(reflectBullet){
                 reflectBullet.ReflectBullet(bullet);
             }
+        }
+
+        void IPlayerBulletAttackable.OnPlayerBulletHit(PlayerBullet bullet){
+            Damage(1);
         }
 
         void Start(){

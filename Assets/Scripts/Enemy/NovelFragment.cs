@@ -2,9 +2,10 @@
 using UnityEngine;
 using UniRx;
 using Echo.Extensions;
+using Echo.Player;
 
 namespace Echo.Enemy{
-    public sealed class NovelFragment : MonoBehaviour
+    public sealed class NovelFragment : MonoBehaviour, IPlayerBulletAttackable
     {
 
         [SerializeField] private EnemyBase enemy;
@@ -41,6 +42,10 @@ namespace Echo.Enemy{
                 bullet.Direction = direction;
                 bullet.Speed = bulletSpeed;
             }
+        }
+
+        void IPlayerBulletAttackable.OnPlayerBulletHit(PlayerBullet bullet){
+            enemy.Damage(1);
         }
 
     }
