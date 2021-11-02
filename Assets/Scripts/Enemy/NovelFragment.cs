@@ -11,6 +11,7 @@ namespace Echo.Enemy{
         [SerializeField] private EnemySensePlayer enemySensePlayer;
         [SerializeField] private float attackInterval;
         [SerializeField] private float bulletSpeed;
+        [SerializeField] private float shootPositionRadius;
         [SerializeField] private Transform shootPosition;
 
         [SerializeField] private Animator animator;
@@ -34,9 +35,10 @@ namespace Echo.Enemy{
             while(true){
                 yield return new WaitForSeconds(attackInterval);
                 var playerPos = enemySensePlayer.PlayerNearby.transform.position;
-                EnemyBullet bullet = Instantiate(bulletPrefab, shootPosition.position, Quaternion.identity);
+                var direction = (playerPos - transform.position).WithY(0).normalized;
+                EnemyBullet bullet = Instantiate(bulletPrefab, shootPosition.position + (direction * shootPositionRadius), Quaternion.identity);
                 bullet.Shooter = transform;
-                bullet.Direction = (playerPos - transform.position).WithY(0).normalized;
+                bullet.Direction = direction;
                 bullet.Speed = bulletSpeed;
             }
         }

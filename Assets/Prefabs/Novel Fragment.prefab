@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 4160688167713851014}
   - component: {fileID: 4160688167713851009}
   - component: {fileID: 4160688167713851008}
+  - component: {fileID: 7866357159643209485}
   m_Layer: 0
   m_Name: Novel Fragment
   m_TagString: Untagged
@@ -85,10 +86,25 @@ MonoBehaviour:
   enemySensePlayer: {fileID: 4160688168714850336}
   attackInterval: 1
   bulletSpeed: 2
+  shootPositionRadius: 0.5
   shootPosition: {fileID: 4160688169094162756}
   animator: {fileID: 4160688168640755861}
   bulletPrefab: {fileID: 5660264450883757291, guid: 2d43de1a43c24a24098c5f109e987191,
     type: 3}
+--- !u!136 &7866357159643209485
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160688167713851011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &4160688168714850338
 GameObject:
   m_ObjectHideFlags: 0
