@@ -28,8 +28,9 @@ namespace Echo.Enemy{
 
         public void Damage(int damage){
             Health -= damage;
-            if(damage <= 0){
+            if(Health <= 0){
                 onDeath.OnNext(Unit.Default);
+                Destroy(gameObject);
             }
         }
 
