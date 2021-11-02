@@ -25,12 +25,11 @@ namespace Echo.Player{
 
         private void OnCollisionEnter(Collision other){
             var attackable = other.gameObject.GetComponent<IPlayerBulletAttackable>();
-            if(attackable == null){
-                bullet.Bounce(other.contacts[0].normal);
-            }else{
+            if(attackable != null){
                 bullet.ResetBounces();
                 attackable.OnPlayerBulletHit(this);
             }
+            bullet.Bounce(other.contacts[0].normal);
         }
 
         void IReflectable.OnReflect(PlayerBase player){
