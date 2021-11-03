@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Echo.Player;
 
 namespace Echo.Scene.Title{
@@ -13,10 +15,7 @@ namespace Echo.Scene.Title{
 
         void Start(){
             playerMovement.enabled = false;
-            buttonPlay.onClick.AddListener(() => {
-                playerMovement.enabled = true;
-                Hide();
-            });
+            buttonPlay.onClick.AddListener(() => PlayAsync().Forget());
             buttonSettings.onClick.AddListener(() => {
                 // TODO show settings
                 Hide();
@@ -24,9 +23,19 @@ namespace Echo.Scene.Title{
             buttonQuit.onClick.AddListener(() => Application.Quit());
         }
 
+        private async UniTaskVoid PlayAsync(){
+            await HideAsync();
+            playerMovement.enabled = true;
+            // maybe display movement controls here
+        }
+
         private void Hide(){
+            HideAsync().Forget();
+        }
+
+        private async UniTask HideAsync(){
             container.interactable = false;
-            // TODO fade out
+            await container.DOFade(0, 0.2f);
             container.gameObject.SetActive(false);
         }
 
