@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 using Echo.UI;
 
 namespace Echo{
@@ -14,7 +15,7 @@ namespace Echo{
 
         private bool isChangingScene;
         private string lastScene;
-        private List<YieldInstruction> loadTasks;
+        private List<AsyncOperation> loadTasks;
 
         void Awake(){
             if(Instance){
@@ -28,7 +29,7 @@ namespace Echo{
                 SceneManager.LoadScene(0, LoadSceneMode.Additive);
                 lastScene = SceneManager.GetSceneByBuildIndex(0).name;
             }
-            loadTasks = new List<YieldInstruction>();
+            loadTasks = new List<AsyncOperation>();
         }
 
         void OnDestroy(){
@@ -39,7 +40,7 @@ namespace Echo{
 
         public void LoadScene(string name){
             if(isChangingScene) return;
-            StartCoroutine(doLoadScene(lastScene, new string[]{name}));
+            LoadSceneAsync(lastScene, new string[]{name}).Forget();
             lastScene = name;
         }
 
@@ -47,35 +48,35 @@ namespace Echo{
             LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void AddSceneLoadTask(YieldInstruction task){
+        public void AddSceneLoadTask(AsyncOperation task){
             if(isChangingScene){
                 loadTasks.Add(task);
             }
         }
 
-        private IEnumerator doLoadScene(string sceneToUnload, string[] scenesToLoad){
+        private async UniTask LoadSceneAsync(string sceneToUnload, string[] scenesToLoad){
             isChangingScene = true;
             loadingScreen.Progress = 0;
             loadingScreen.Show();
-            yield return SceneManager.UnloadSceneAsync(sceneToUnload);
-            yield return loadScenesParallel(scenesToLoad);
+            await SceneManager.UnloadSceneAsync(sceneToUnload);
+            await LoadScenesParallelAsync(scenesToLoad);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
             foreach(var task in loadTasks){
-                yield return task;
+                await task;
             }
             loadTasks.Clear();
             loadingScreen.Hide();
             isChangingScene = false;
         }
 
-        private IEnumerator loadScenesParallel(string[] scenesToLoad){
+        private async UniTask LoadScenesParallelAsync(string[] scenesToLoad){
             AsyncOperation[] ops = scenesToLoad.Select(name => SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive)).ToArray();
             while(true){
                 loadingScreen.Progress = ops.Average(op => op.progress);
                 if(ops.All(op => op.isDone)){
                     break;
                 }
-                yield return null;
+                await UniTask.Yield();
             }
         }
 
