@@ -15,7 +15,6 @@ namespace Echo{
 
         private bool isChangingScene;
         private string lastScene;
-        private List<AsyncOperation> loadTasks;
 
         void Awake(){
             if(Instance){
@@ -29,7 +28,6 @@ namespace Echo{
                 SceneManager.LoadScene(0, LoadSceneMode.Additive);
                 lastScene = SceneManager.GetSceneByBuildIndex(0).name;
             }
-            loadTasks = new List<AsyncOperation>();
         }
 
         void OnDestroy(){
@@ -48,12 +46,6 @@ namespace Echo{
             LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void AddSceneLoadTask(AsyncOperation task){
-            if(isChangingScene){
-                loadTasks.Add(task);
-            }
-        }
-
         private async UniTask LoadSceneAsync(string sceneToUnload, string[] scenesToLoad){
             isChangingScene = true;
             loadingScreen.Progress = 0;
@@ -61,10 +53,6 @@ namespace Echo{
             await SceneManager.UnloadSceneAsync(sceneToUnload);
             await LoadScenesParallelAsync(scenesToLoad);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
-            foreach(var task in loadTasks){
-                await task;
-            }
-            loadTasks.Clear();
             loadingScreen.Hide();
             isChangingScene = false;
         }
@@ -80,17 +68,5 @@ namespace Echo{
             }
         }
 
-        private IEnumerator loadScenesSequential(string[] scenesToLoad){
-            AsyncOperation op = SceneManager.LoadSceneAsync(scenesToLoad[0], LoadSceneMode.Additive);
-            for(int i = 0;true;){
-                loadingScreen.Progress = (float)i / scenesToLoad.Length + (1.0f / scenesToLoad.Length) * op.progress;
-                if(op.isDone){
-                    if(++ i >= scenesToLoad.Length) break;
-                    op = SceneManager.LoadSceneAsync(scenesToLoad[i], LoadSceneMode.Additive);
-                }
-                yield return null;
-            }
-        }
-
-}
+    }
 }
