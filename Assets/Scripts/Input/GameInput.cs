@@ -29,14 +29,6 @@ namespace Echo
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Reflect"",
-                    ""type"": ""Button"",
-                    ""id"": ""a8823e9d-8065-4d6f-b128-3d89d12e1e38"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""e6643159-6810-4bee-b636-2561863e1ef4"",
@@ -122,17 +114,6 @@ namespace Echo
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5b42fd8c-134e-4d8f-bc73-47821e52b1bd"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Reflect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8a7c9e0b-e071-4723-8f3e-7f659b8f8c19"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -206,7 +187,6 @@ namespace Echo
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Reflect = m_Player.FindAction("Reflect", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_NormalAttack = m_Player.FindAction("NormalAttack", throwIfNotFound: true);
         }
@@ -259,7 +239,6 @@ namespace Echo
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Reflect;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_NormalAttack;
         public struct PlayerActions
@@ -267,7 +246,6 @@ namespace Echo
             private @GameInput m_Wrapper;
             public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Reflect => m_Wrapper.m_Player_Reflect;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @NormalAttack => m_Wrapper.m_Player_NormalAttack;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -282,9 +260,6 @@ namespace Echo
                     @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Reflect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReflect;
-                    @Reflect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReflect;
-                    @Reflect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReflect;
                     @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -298,9 +273,6 @@ namespace Echo
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
-                    @Reflect.started += instance.OnReflect;
-                    @Reflect.performed += instance.OnReflect;
-                    @Reflect.canceled += instance.OnReflect;
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
@@ -332,7 +304,6 @@ namespace Echo
         public interface IPlayerActions
         {
             void OnMove(InputAction.CallbackContext context);
-            void OnReflect(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnNormalAttack(InputAction.CallbackContext context);
         }

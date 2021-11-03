@@ -1,5 +1,5 @@
 {
-    "name": "Input",
+    "name": "GameInput",
     "maps": [
         {
             "name": "Player",
@@ -10,14 +10,6 @@
                     "type": "Value",
                     "id": "4d029d10-7c19-40eb-89cb-01939fc1f0a4",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Reflect",
-                    "type": "Button",
-                    "id": "a8823e9d-8065-4d6f-b128-3d89d12e1e38",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -104,17 +96,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "5b42fd8c-134e-4d8f-bc73-47821e52b1bd",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Reflect",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

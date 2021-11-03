@@ -12,7 +12,7 @@ namespace Echo.Player{
 
         private void Awake(){
             inputActions = new GameInput();
-            inputActions.Player.Reflect.performed += ctx => ReflectBullets();
+            inputActions.Player.NormalAttack.performed += ctx => ReflectBullets();
         }
 
         private void OnEnable(){
