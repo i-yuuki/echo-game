@@ -8,6 +8,8 @@ namespace Echo.Player{
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private float bulletAcceleration;
+        [Range(0, 1)]
+        [SerializeField] private float playerMovementRatio;
         [SerializeField] private PlayerBullet bulletPrefab;
 
         private void Awake(){
@@ -40,7 +42,12 @@ namespace Echo.Player{
         public void ReflectBullet(BulletBase bulletToReflect){
             Destroy(bulletToReflect.gameObject);
             var bullet = Instantiate(bulletPrefab, bulletToReflect.transform.position, Quaternion.identity);
-            bullet.Direction = -bulletToReflect.Direction;
+            var movement = player.Movement;
+            if(movement.sqrMagnitude > 0){
+                bullet.Direction = Vector3.Lerp(-bulletToReflect.Direction, movement.normalized, playerMovementRatio);
+            }else{
+                bullet.Direction = -bulletToReflect.Direction;
+            }
             bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
         }
 

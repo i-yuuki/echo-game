@@ -10,9 +10,12 @@ namespace Echo.Player{
         [SerializeField] private Animator animator;
 
         private GameInput inputActions;
+        private Vector3 movement;
         private Vector3 velocity;
         private Quaternion targetRotation;
         private new Camera camera;
+
+        public Vector3 Movement => movement;
 
         private void Awake(){
             inputActions = new GameInput();
@@ -38,7 +41,7 @@ namespace Echo.Player{
             forward.y = 0;
             right.y = 0;
             var input = inputActions.Player.Move.ReadValue<Vector2>();
-            var movement = right.normalized * input.x + forward.normalized * input.y;
+            movement = right.normalized * input.x + forward.normalized * input.y;
             characterController.Move(movement * walkSpeed * Time.deltaTime);
 
             animator.SetFloat("Walk", input.magnitude);

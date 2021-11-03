@@ -70,6 +70,7 @@ MonoBehaviour:
     value: 4
   maxHealth: 4
   reflectBullet: {fileID: 2407590539128147706}
+  movement: {fileID: 3682477567055064201}
 --- !u!114 &3682477567055064201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
   ringRadius: 0.85
   ringWidth: 0.6
   bulletAcceleration: 0.25
+  playerMovementRatio: 0.5
   bulletPrefab: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
     type: 3}
 --- !u!95 &6502732797595125565

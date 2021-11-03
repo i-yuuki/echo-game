@@ -9,12 +9,14 @@ namespace Echo.Player{
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private int maxHealth;
         [SerializeField] private PlayerReflectBullet reflectBullet;
+        [SerializeField] private PlayerMovement movement;
 
         public int Health{
             get => health.Value;
             private set => health.Value = value;
         }
         public int MaxHealth => maxHealth;
+        public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
         public IObservable<int> OnHealthChange => health;
 
         public void Damage(int damage){
