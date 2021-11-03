@@ -43,6 +43,14 @@ namespace Echo
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpecialAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ba21313-a1b1-4c83-bea1-6055babd1340"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -126,7 +134,7 @@ namespace Echo
                 {
                     ""name"": """",
                     ""id"": ""f3495e00-65ce-43d0-8309-72f457c001f3"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -153,6 +161,28 @@ namespace Echo
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""NormalAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e336eec3-785a-443d-96d4-371c889d539c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d370d08f-6932-4a37-b8fe-6caa0a5b8abf"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SpecialAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -189,6 +219,7 @@ namespace Echo
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_NormalAttack = m_Player.FindAction("NormalAttack", throwIfNotFound: true);
+            m_Player_SpecialAttack = m_Player.FindAction("SpecialAttack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -241,6 +272,7 @@ namespace Echo
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_NormalAttack;
+        private readonly InputAction m_Player_SpecialAttack;
         public struct PlayerActions
         {
             private @GameInput m_Wrapper;
@@ -248,6 +280,7 @@ namespace Echo
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @NormalAttack => m_Wrapper.m_Player_NormalAttack;
+            public InputAction @SpecialAttack => m_Wrapper.m_Player_SpecialAttack;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -266,6 +299,9 @@ namespace Echo
                     @NormalAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
                     @NormalAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
                     @NormalAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
+                    @SpecialAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
+                    @SpecialAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
+                    @SpecialAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -279,6 +315,9 @@ namespace Echo
                     @NormalAttack.started += instance.OnNormalAttack;
                     @NormalAttack.performed += instance.OnNormalAttack;
                     @NormalAttack.canceled += instance.OnNormalAttack;
+                    @SpecialAttack.started += instance.OnSpecialAttack;
+                    @SpecialAttack.performed += instance.OnSpecialAttack;
+                    @SpecialAttack.canceled += instance.OnSpecialAttack;
                 }
             }
         }
@@ -306,6 +345,7 @@ namespace Echo
             void OnMove(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnNormalAttack(InputAction.CallbackContext context);
+            void OnSpecialAttack(InputAction.CallbackContext context);
         }
     }
 }

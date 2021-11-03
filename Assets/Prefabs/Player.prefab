@@ -116,7 +116,9 @@ MonoBehaviour:
   ringWidth: 0.6
   bulletAcceleration: 0.25
   playerMovementRatio: 0.5
-  bulletPrefab: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
+  prefabBullet: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
+    type: 3}
+  prefabPiercingBullet: {fileID: 455717778730015856, guid: 867f5893265db5f42b45e364fec52e6a,
     type: 3}
 --- !u!95 &6502732797595125565
 Animator:

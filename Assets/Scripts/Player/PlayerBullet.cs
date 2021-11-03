@@ -47,8 +47,8 @@ namespace Echo.Player{
             }
         }
 
-        void IReflectable.OnReflect(PlayerBase player){
-            player.ReflectBullet(bullet);
+        void IReflectable.OnReflect(PlayerBase player, ReflectType reflectType){
+            player.ReflectBullet(bullet, reflectType);
         }
 
     }
