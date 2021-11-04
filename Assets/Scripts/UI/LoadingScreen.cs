@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 namespace Echo.UI{
     public sealed class LoadingScreen : MonoBehaviour{
@@ -13,11 +15,13 @@ namespace Echo.UI{
             set => progressBar.value = value;
         }
 
-        public void Show(){
+        public async UniTask ShowAsync(){
             gameObject.SetActive(true);
+            await group.DOFade(1, 0.2f).From(0);
         }
 
-        public void Hide(){
+        public async UniTask HideAsync(){
+            await group.DOFade(0, 0.2f).From(1);
             gameObject.SetActive(false);
         }
 

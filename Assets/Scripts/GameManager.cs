@@ -49,11 +49,11 @@ namespace Echo{
         private async UniTask LoadSceneAsync(string sceneToUnload, string[] scenesToLoad){
             isChangingScene = true;
             loadingScreen.Progress = 0;
-            loadingScreen.Show();
+            await loadingScreen.ShowAsync();
             await SceneManager.UnloadSceneAsync(sceneToUnload);
             await LoadScenesParallelAsync(scenesToLoad);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenesToLoad[0]));
-            loadingScreen.Hide();
+            await loadingScreen.HideAsync();
             isChangingScene = false;
         }
 
