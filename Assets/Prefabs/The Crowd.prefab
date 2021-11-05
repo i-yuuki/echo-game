@@ -87,7 +87,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4074098618019392522}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6379128941296781640
 CapsuleCollider:
@@ -116,6 +116,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 7568878932635197572}
+--- !u!1 &1866499316872760245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6501042637812858992}
+  m_Layer: 0
+  m_Name: Shoot Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6501042637812858992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866499316872760245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4074098618019392522}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2489036747696682464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8359308332771779067}
+  m_Layer: 0
+  m_Name: Shoot Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8359308332771779067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489036747696682464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4074098618019392522}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2617382826884184466
 Animator:
   serializedVersion: 3
@@ -178,6 +238,8 @@ Transform:
   m_Children:
   - {fileID: 3354134523743234823}
   - {fileID: 7605134689450658603}
+  - {fileID: 8359308332771779067}
+  - {fileID: 6501042637812858992}
   - {fileID: 3144609680994430033}
   - {fileID: 946192847476861222}
   m_Father: {fileID: 0}
@@ -213,8 +275,13 @@ MonoBehaviour:
   enemy: {fileID: 4457607725192516577}
   enemySensePlayer: {fileID: 6801145713921569098}
   attackInterval: 3
-  attackRadius: 3
+  bulletSpeed: 2
+  shootPositions:
+  - {fileID: 8359308332771779067}
+  - {fileID: 6501042637812858992}
   animator: {fileID: 2617382826884184466}
+  bulletPrefab: {fileID: 5660264450883757291, guid: 036d293a35e63104ab8015dcc136274f,
+    type: 3}
 --- !u!1 &8393734668020640827
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4074098618019392522}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2484486613169748649
 CapsuleCollider:

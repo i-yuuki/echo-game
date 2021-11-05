@@ -2,6 +2,7 @@
 using UnityEngine;
 using UniRx;
 using Echo.Enemy;
+using Echo.Extensions;
 using Echo.Player;
 
 namespace Echo.Boss{
@@ -10,8 +11,10 @@ namespace Echo.Boss{
         [SerializeField] private EnemyBase enemy;
         [SerializeField] private EnemySensePlayer enemySensePlayer;
         [SerializeField] private float attackInterval;
-        [SerializeField] private float attackRadius;
+        [SerializeField] private float bulletSpeed;
+        [SerializeField] private Transform[] shootPositions;
         [SerializeField] private Animator animator;
+        [SerializeField] private EnemyBullet bulletPrefab;
 
         private void Start(){
             enemySensePlayer.OnPlayerFound.Subscribe(_ => SetEnemyAwake(true)).AddTo(this);
@@ -34,10 +37,13 @@ namespace Echo.Boss{
 
         // Animation Event から呼ばれる
         public void Attack(){
-            foreach(Collider collider in Physics.OverlapSphere(transform.position, attackRadius)){
-                var player = collider.GetComponent<PlayerBase>();
-                if(!player) continue;
-                player.Damage(1);
+            var playerPos = enemySensePlayer.PlayerNearby.transform.position;
+            foreach(var shootPos in shootPositions){
+                var direction = (playerPos - shootPos.position).WithY(0);
+                var bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                bullet.Shooter = transform;
+                bullet.Direction = direction;
+                bullet.Speed = bulletSpeed;
             }
         }
         
