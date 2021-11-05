@@ -1,31 +1,24 @@
 ﻿using System;
 using UnityEngine;
+using UniRx;
+using Echo.Input;
 
 namespace Echo.Player{
     public class PlayerReflectBullet : MonoBehaviour{
         
-        private GameInput inputActions;
         private PlayerBase player;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private float bulletAcceleration;
         [Range(0, 1)]
         [SerializeField] private float playerMovementRatio;
+        [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
 
         private void Awake(){
-            inputActions = new GameInput();
-            inputActions.Player.NormalAttack.performed  += ctx => ReflectBullets(ReflectType.NORMAL);
-            inputActions.Player.SpecialAttack.performed += ctx => ReflectBullets(ReflectType.SPECIAL);
-        }
-
-        private void OnEnable(){
-            inputActions.Enable();
-        }
-
-        private void OnDisable(){
-            inputActions.Disable();
+            inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets(ReflectType.NORMAL)).AddTo(this);
+            inputReader.OnSpecialAttack.Subscribe(_ => ReflectBullets(ReflectType.SPECIAL)).AddTo(this);
         }
 
         public void Init(PlayerBase player){
@@ -33,6 +26,7 @@ namespace Echo.Player{
         }
 
         private void ReflectBullets(ReflectType reflectType){
+            Debug.Log(reflectType);
             if(!player) return;
             foreach(Collider collider in Physics.OverlapSphere(transform.position, ringRadius + ringWidth / 2)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();

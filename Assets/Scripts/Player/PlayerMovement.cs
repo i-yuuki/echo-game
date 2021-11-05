@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UniRx;
+using Echo.Input;
 
 namespace Echo.Player{
     public class PlayerMovement : MonoBehaviour{
@@ -6,10 +8,11 @@ namespace Echo.Player{
         [SerializeField] private float walkSpeed;
         [SerializeField] private float rotationSpeed;
         [SerializeField] private float gravity = -9.81f;
+        [SerializeField] private InputReader inputReader;
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Animator animator;
 
-        private GameInput inputActions;
+        private Vector2 movementInput;
         private Vector3 movement;
         private Vector3 velocity;
         private Quaternion targetRotation;
@@ -18,15 +21,7 @@ namespace Echo.Player{
         public Vector3 Movement => movement;
 
         private void Awake(){
-            inputActions = new GameInput();
-        }
-
-        private void OnEnable(){
-            inputActions.Enable();
-        }
-
-        private void OnDisable(){
-            inputActions.Disable();
+            inputReader.OnMove.Subscribe(movement => movementInput = movement).AddTo(this);
         }
 
         void Start(){
@@ -40,11 +35,10 @@ namespace Echo.Player{
             Vector3 right   = camera.transform.right;
             forward.y = 0;
             right.y = 0;
-            var input = inputActions.Player.Move.ReadValue<Vector2>();
-            movement = right.normalized * input.x + forward.normalized * input.y;
+            movement = right.normalized * movementInput.x + forward.normalized * movementInput.y;
             characterController.Move(movement * walkSpeed * Time.deltaTime);
 
-            animator.SetFloat("Walk", input.magnitude);
+            animator.SetFloat("Walk", movementInput.magnitude);
 
             velocity.y += gravity * Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);
