@@ -11,7 +11,10 @@ namespace Echo{
 
         public Vector3 Direction{
             get => direction;
-            set => direction = value.normalized;
+            set{
+                direction = value.normalized;
+                transform.LookAt(transform.position + direction);
+            }
         }
         public float Speed{
             get => speed;
