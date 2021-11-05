@@ -218,7 +218,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5502884894316377826
 MonoBehaviour:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc4e90b6bd17ef488ae6dcc2291471f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSize: 64
+  spriteSize: 80
   player: {fileID: 4858312841817191031}
   slider: {fileID: 5502884894316377826}
 --- !u!1 &6611303074312437943
