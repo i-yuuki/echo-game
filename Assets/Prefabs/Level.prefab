@@ -102,7 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 7223988605811638801}
-  selectButtonOnShow: {fileID: 4619101768700358583}
+  buttonNextLevel: {fileID: 8140125726947898953}
+  buttonLevelSelect: {fileID: 8257524265520112374}
 --- !u!1 &498923390296408164
 GameObject:
   m_ObjectHideFlags: 0

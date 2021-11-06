@@ -12,6 +12,7 @@ namespace Echo.Level{
         [SerializeField] private RoomEnemies enemies;
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [SerializeField] private LevelCompleteDisplay display;
+        [SerializeField] private string nextScene; // ここでいいのか？
 
         private void Start(){
             enemies.OnAllEnemiesDied.Subscribe(_ => Display().Forget()).AddTo(this);
@@ -24,7 +25,7 @@ namespace Echo.Level{
             Time.timeScale = 1;
             virtualCamera.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-            display.Show();
+            display.Show(nextScene);
         }
 
     }
