@@ -28,6 +28,7 @@ namespace Echo{
                 SceneManager.LoadScene(0, LoadSceneMode.Additive);
                 lastScene = SceneManager.GetSceneByBuildIndex(0).name;
             }
+            loadingScreen.PrepareVideo();
         }
 
         void OnDestroy(){

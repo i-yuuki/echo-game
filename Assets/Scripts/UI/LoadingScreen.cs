@@ -21,6 +21,10 @@ namespace Echo.UI{
             }
         }
 
+        public void PrepareVideo(){
+            video.Prepare();
+        }
+
         public async UniTask ShowAsync(){
             video.Play();
             gameObject.SetActive(true);
