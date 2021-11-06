@@ -2,19 +2,19 @@
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Echo.Player;
+using Echo.Input;
 
 namespace Echo.Scene.Title{
     public sealed class TitleScene : MonoBehaviour{
 
+        [SerializeField] private InputReader inputReader;
         [SerializeField] private CanvasGroup container;
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonSettings;
         [SerializeField] private Button buttonQuit;
-        [SerializeField] private PlayerMovement playerMovement;
 
         void Start(){
-            playerMovement.enabled = false;
+            inputReader.EnableMenuInput();
             buttonPlay.onClick.AddListener(() => PlayAsync().Forget());
             buttonSettings.onClick.AddListener(() => {
                 // TODO show settings
@@ -25,7 +25,7 @@ namespace Echo.Scene.Title{
 
         private async UniTaskVoid PlayAsync(){
             await HideAsync();
-            playerMovement.enabled = true;
+            inputReader.EnableGameplayInput();
             // maybe display movement controls here
         }
 
