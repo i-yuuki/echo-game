@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6f95c495d8dcd40a0eb7a50be2df5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
+  walkSpeed: 3
   rotationSpeed: 15
   gravity: -9.81
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
