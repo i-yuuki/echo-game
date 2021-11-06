@@ -19,12 +19,20 @@ namespace Echo.Input{
         public IObservable<Unit> OnNormalAttack => onNormalAttack;
         public IObservable<Unit> OnSpecialAttack => onSpecialAttack;
 
+        public void EnableGameplayInput(){
+            input.Gameplay.Enable();
+        }
+
+        public void EnableMenuInput(){
+            input.Gameplay.Disable();
+        }
+
         private void OnEnable(){
             if(input == null){
                 input = new GameInput();
                 input.Gameplay.SetCallbacks(this);
             }
-            input.Enable();
+            EnableGameplayInput();
         }
 
         private void OnDisable(){

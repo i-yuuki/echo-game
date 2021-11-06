@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b998369ed60eea046aea3495c46b2d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   container: {fileID: 7223988605811638801}
   buttonNextLevel: {fileID: 8140125726947898953}
   buttonLevelSelect: {fileID: 8257524265520112374}
