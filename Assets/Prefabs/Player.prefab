@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3682477567055064202}
   - component: {fileID: 3682477567055064205}
   - component: {fileID: 3682477567055064201}
-  - component: {fileID: 3682477567055064203}
   - component: {fileID: 2407590539128147706}
+  - component: {fileID: 8943567986012619952}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -86,20 +86,9 @@ MonoBehaviour:
   walkSpeed: 2
   rotationSpeed: 15
   gravity: -9.81
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   characterController: {fileID: 3682477567055064202}
   animator: {fileID: 6502732797595125565}
---- !u!114 &3682477567055064203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682477567055064199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 755487e628668694996a1e1dee96d4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2407590539128147706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,10 +105,24 @@ MonoBehaviour:
   ringWidth: 0.6
   bulletAcceleration: 0.25
   playerMovementRatio: 0.5
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   prefabBullet: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
     type: 3}
   prefabPiercingBullet: {fileID: 455717778730015856, guid: 867f5893265db5f42b45e364fec52e6a,
     type: 3}
+--- !u!114 &8943567986012619952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682477567055064199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec619e1482856714b91854db618e2423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3682477567055064205}
 --- !u!95 &6502732797595125565
 Animator:
   serializedVersion: 3
