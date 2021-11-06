@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 using UniRx;
 using Echo.Enemy;
 using Echo.Extensions;
@@ -31,6 +32,7 @@ namespace Echo.Boss{
         private IEnumerator AttackLoop(){
             while(true){
                 yield return new WaitForSeconds(attackInterval);
+                transform.DODynamicLookAt(enemySensePlayer.PlayerNearby.transform.position.WithY(transform.position.y), 0.5f);
                 animator.SetTrigger("Attack");
             }
         }
