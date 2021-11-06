@@ -338,8 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 676999218}
-  enemies:
-  - {fileID: 391969862}
+  enemies: {fileID: 2147429781}
   exit: {fileID: 303295043}
 --- !u!1 &260680826
 GameObject:
@@ -390,8 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 676999218}
-  enemies:
-  - {fileID: 694200639}
+  enemies: {fileID: 1500619071}
   exit: {fileID: 282776856}
 --- !u!1001 &282776852
 PrefabInstance:
@@ -807,12 +805,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 391969860}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &391969862 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4160688167713851011, guid: 7072d70d84d487a42812b5d2090c2f11,
+--- !u!114 &391969862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4160688167713851009, guid: 7072d70d84d487a42812b5d2090c2f11,
     type: 3}
   m_PrefabInstance: {fileID: 391969860}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1546bf8473c1841b666c898c39f8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &423585751
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587413565}
+  - component: {fileID: 587413566}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -888,6 +893,22 @@ Transform:
   m_Father: {fileID: 1291513568}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &587413566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587413564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06558857e1e78324b8dcfb1f31b075c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  bosses:
+  - {fileID: 7510448337050584763}
+  destroyEnemiesOnBossDeath: 1
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,12 +1242,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 694200637}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &694200639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4160688167713851011, guid: 7072d70d84d487a42812b5d2090c2f11,
+--- !u!114 &694200639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4160688167713851009, guid: 7072d70d84d487a42812b5d2090c2f11,
     type: 3}
   m_PrefabInstance: {fileID: 694200637}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1546bf8473c1841b666c898c39f8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &915185455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,8 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 676999218}
-  enemies:
-  - {fileID: 1990336976}
+  enemies: {fileID: 587413566}
   exit: {fileID: 344065148}
 --- !u!1 &1322784218
 GameObject:
@@ -1649,6 +1675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500619070}
+  - component: {fileID: 1500619071}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -1671,6 +1698,22 @@ Transform:
   m_Father: {fileID: 260680827}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500619071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500619069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06558857e1e78324b8dcfb1f31b075c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 694200639}
+  bosses: []
+  destroyEnemiesOnBossDeath: 1
 --- !u!1 &1548426603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,12 +2326,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1990336976 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7576602443587602568, guid: 49d9041f0f5b9854d9fb8879703a9f92,
-    type: 3}
-  m_PrefabInstance: {fileID: 7510448337050584762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1990336979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4074098618019392522, guid: 49d9041f0f5b9854d9fb8879703a9f92,
@@ -2304,6 +2341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2147429780}
+  - component: {fileID: 2147429781}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -2326,6 +2364,22 @@ Transform:
   m_Father: {fileID: 188449370}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2147429781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147429779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06558857e1e78324b8dcfb1f31b075c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 391969862}
+  bosses: []
+  destroyEnemiesOnBossDeath: 1
 --- !u!1001 &7510448337050584762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2400,3 +2454,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49d9041f0f5b9854d9fb8879703a9f92, type: 3}
+--- !u!114 &7510448337050584763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4457607725192516577, guid: 49d9041f0f5b9854d9fb8879703a9f92,
+    type: 3}
+  m_PrefabInstance: {fileID: 7510448337050584762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1546bf8473c1841b666c898c39f8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

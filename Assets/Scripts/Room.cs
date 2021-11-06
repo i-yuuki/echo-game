@@ -1,35 +1,25 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using Cinemachine;
+using UniRx;
 
 namespace Echo.Level{
     public class Room : MonoBehaviour{
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
-        [SerializeField] private GameObject[] enemies;
+        [SerializeField] private RoomEnemies enemies;
         [SerializeField] private RoomDoor exit;
 
-        private bool isExitOpened;
-
         private void Start(){
-            isExitOpened = false;
-        }
-
-        private void Update(){
-            if(isExitOpened) return;
-            if(enemies.All(obj => !obj)){
-                isExitOpened = true;
+            if(enemies){
+                enemies.OnAllEnemiesDied.Subscribe(_ => exit.Open()).AddTo(this);
+            }else{
                 exit.Open();
             }
         }
 
         public void Enter(){
             virtualCamera.Follow = transform;
-            foreach(var obj in enemies){
-                if(obj){
-                    obj.SetActive(true);
-                }
-            }
+            enemies.ActivateAll();
         }
 
     }
