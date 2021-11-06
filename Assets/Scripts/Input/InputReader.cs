@@ -5,7 +5,7 @@ using UniRx;
 
 namespace Echo.Input{
     [CreateAssetMenu(fileName = "InputReader", menuName = "ScriptableObject/Game/Input Reader")]
-    public sealed class InputReader : ScriptableObject, GameInput.IPlayerActions{
+    public sealed class InputReader : ScriptableObject, GameInput.IGameplayActions{
 
         private GameInput input;
 
@@ -22,7 +22,7 @@ namespace Echo.Input{
         private void OnEnable(){
             if(input == null){
                 input = new GameInput();
-                input.Player.SetCallbacks(this);
+                input.Gameplay.SetCallbacks(this);
             }
             input.Enable();
         }
@@ -31,23 +31,23 @@ namespace Echo.Input{
             input.Disable();
         }
 
-        void GameInput.IPlayerActions.OnInteract(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnInteract(InputAction.CallbackContext ctx){
             if(ctx.phase == InputActionPhase.Performed){
                 onInteract.OnNext(Unit.Default);
             }
         }
 
-        void GameInput.IPlayerActions.OnMove(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnMove(InputAction.CallbackContext ctx){
             move.Value = ctx.ReadValue<Vector2>();
         }
 
-        void GameInput.IPlayerActions.OnNormalAttack(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnNormalAttack(InputAction.CallbackContext ctx){
             if(ctx.phase == InputActionPhase.Performed){
                 onNormalAttack.OnNext(Unit.Default);
             }
         }
 
-        void GameInput.IPlayerActions.OnSpecialAttack(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnSpecialAttack(InputAction.CallbackContext ctx){
             if(ctx.phase == InputActionPhase.Performed){
                 onSpecialAttack.OnNext(Unit.Default);
             }

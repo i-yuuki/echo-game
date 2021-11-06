@@ -17,7 +17,7 @@ namespace Echo
     ""name"": ""GameInput"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Gameplay"",
             ""id"": ""c5a5a01e-ee35-4cf9-b502-b497b0f4a8e0"",
             ""actions"": [
                 {
@@ -214,12 +214,12 @@ namespace Echo
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-            m_Player_NormalAttack = m_Player.FindAction("NormalAttack", throwIfNotFound: true);
-            m_Player_SpecialAttack = m_Player.FindAction("SpecialAttack", throwIfNotFound: true);
+            // Gameplay
+            m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+            m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+            m_Gameplay_NormalAttack = m_Gameplay.FindAction("NormalAttack", throwIfNotFound: true);
+            m_Gameplay_SpecialAttack = m_Gameplay.FindAction("SpecialAttack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -266,44 +266,44 @@ namespace Echo
             asset.Disable();
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Interact;
-        private readonly InputAction m_Player_NormalAttack;
-        private readonly InputAction m_Player_SpecialAttack;
-        public struct PlayerActions
+        // Gameplay
+        private readonly InputActionMap m_Gameplay;
+        private IGameplayActions m_GameplayActionsCallbackInterface;
+        private readonly InputAction m_Gameplay_Move;
+        private readonly InputAction m_Gameplay_Interact;
+        private readonly InputAction m_Gameplay_NormalAttack;
+        private readonly InputAction m_Gameplay_SpecialAttack;
+        public struct GameplayActions
         {
             private @GameInput m_Wrapper;
-            public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Interact => m_Wrapper.m_Player_Interact;
-            public InputAction @NormalAttack => m_Wrapper.m_Player_NormalAttack;
-            public InputAction @SpecialAttack => m_Wrapper.m_Player_SpecialAttack;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public GameplayActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+            public InputAction @NormalAttack => m_Wrapper.m_Gameplay_NormalAttack;
+            public InputAction @SpecialAttack => m_Wrapper.m_Gameplay_SpecialAttack;
+            public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void SetCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+            public void SetCallbacks(IGameplayActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+                if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
                 {
-                    @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @NormalAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
-                    @NormalAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
-                    @NormalAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNormalAttack;
-                    @SpecialAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
-                    @SpecialAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
-                    @SpecialAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAttack;
+                    @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                    @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                    @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                    @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @NormalAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
+                    @NormalAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
+                    @NormalAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
+                    @SpecialAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
+                    @SpecialAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
+                    @SpecialAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
                 }
-                m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+                m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @Move.started += instance.OnMove;
@@ -321,7 +321,7 @@ namespace Echo
                 }
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
+        public GameplayActions @Gameplay => new GameplayActions(this);
         private int m_KeyboardSchemeIndex = -1;
         public InputControlScheme KeyboardScheme
         {
@@ -340,7 +340,7 @@ namespace Echo
                 return asset.controlSchemes[m_GamepadSchemeIndex];
             }
         }
-        public interface IPlayerActions
+        public interface IGameplayActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
