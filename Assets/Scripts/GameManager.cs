@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+using Echo.Input;
 using Echo.UI;
 
 namespace Echo{
@@ -11,6 +10,7 @@ namespace Echo{
 
         public static GameManager Instance{ get; private set; }
 
+        [SerializeField] private InputReader inputReader;
         [SerializeField] private LoadingScreen loadingScreen;
 
         private bool isChangingScene;
@@ -40,6 +40,7 @@ namespace Echo{
             if(isChangingScene) return;
             LoadSceneAsync(lastScene, new string[]{name}).Forget();
             lastScene = name;
+            inputReader.EnableGameplayInput();
         }
 
         public void ReloadScene(){

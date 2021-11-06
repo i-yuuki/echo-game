@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ced58f96de09b43ab545473c0c3d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   loadingScreen: {fileID: 501527669}
 --- !u!4 &987379903
 Transform:
