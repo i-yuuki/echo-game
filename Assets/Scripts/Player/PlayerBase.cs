@@ -7,7 +7,9 @@ namespace Echo.Player{
     public class PlayerBase : MonoBehaviour, IPlayerBulletAttackable{
 
         [SerializeField] private IntReactiveProperty health;
+        [SerializeField] private IntReactiveProperty level;
         [SerializeField] private int maxHealth;
+        [SerializeField] private int maxLevel;
         [SerializeField] private float noDamageDuration;
         private PlayerReflectBullet reflectBullet;
         private PlayerSlowmo slowmo;
@@ -20,6 +22,11 @@ namespace Echo.Player{
             private set => health.Value = Mathf.Clamp(value, 0, MaxHealth);
         }
         public int MaxHealth => maxHealth;
+        public int Level{
+            get => level.Value;
+            private set => level.Value = Mathf.Clamp(value, 1, MaxLevel);
+        }
+        public int MaxLevel => maxLevel;
         public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
         public IObservable<int> OnHealthChange => health;
 
@@ -51,8 +58,13 @@ namespace Echo.Player{
             switch(itemInfo.Effect){
                 case Item.ItemEffectType.None: break;
                 case Item.ItemEffectType.Heal:             Health ++; break;
-                case Item.ItemEffectType.LevelUp:          /* TODO */ break;
-                case Item.ItemEffectType.CycleBulletType:  if(reflectBullet) reflectBullet.CycleReflectType(); break;
+                case Item.ItemEffectType.LevelUp:          Level ++; break;
+                case Item.ItemEffectType.CycleBulletType:
+                    if(reflectBullet){
+                        reflectBullet.CycleReflectType();
+                        Level = 1;
+                    }
+                    break;
                 case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
                 default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
             }
