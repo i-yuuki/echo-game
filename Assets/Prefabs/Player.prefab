@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ringRadius: 0.85
   ringWidth: 0.6
-  bulletAcceleration: 0.25
+  bulletAcceleration: 0.5
   playerMovementRatio: 0.5
   cooldownDuration: 0.5
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
