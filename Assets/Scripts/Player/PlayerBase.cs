@@ -13,7 +13,7 @@ namespace Echo.Player{
 
         public int Health{
             get => health.Value;
-            private set => health.Value = value;
+            private set => health.Value = Mathf.Clamp(value, 0, MaxHealth);
         }
         public int MaxHealth => maxHealth;
         public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
