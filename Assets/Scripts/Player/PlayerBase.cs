@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UniRx;
-using Echo.Enemy;
+using Echo.Item;
 
 namespace Echo.Player{
     public class PlayerBase : MonoBehaviour, IPlayerBulletAttackable{
@@ -26,6 +26,17 @@ namespace Echo.Player{
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
             if(reflectBullet){
                 reflectBullet.ReflectBullet(bullet, reflectType);
+            }
+        }
+
+        public void ApplyItemEffect(ItemInfo itemInfo){
+            switch(itemInfo.Effect){
+                case Item.ItemEffectType.None: break;
+                case Item.ItemEffectType.Heal:             Health ++; break;
+                case Item.ItemEffectType.LevelUp:          /* TODO */ break;
+                case Item.ItemEffectType.CycleBulletType:  /* TODO */ break;
+                case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
+                default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
             }
         }
 
