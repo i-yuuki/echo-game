@@ -52,7 +52,7 @@ namespace Echo.Player{
                 case Item.ItemEffectType.None: break;
                 case Item.ItemEffectType.Heal:             Health ++; break;
                 case Item.ItemEffectType.LevelUp:          /* TODO */ break;
-                case Item.ItemEffectType.CycleBulletType:  /* TODO */ break;
+                case Item.ItemEffectType.CycleBulletType:  if(reflectBullet) reflectBullet.CycleReflectType(); break;
                 case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
                 default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
             }
