@@ -37,12 +37,17 @@ namespace Echo.Player{
         private void ReflectBullets(ReflectType reflectType){
             if(!player) return;
             if(cooldownTime > 0) return;
-            cooldownTime = cooldownDuration;
+            bool reflected = false;
             foreach(Collider collider in Physics.OverlapSphere(transform.position, ringRadius + ringWidth / 2)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
                 var monoReflectable = reflectable as MonoBehaviour;
                 reflectable.OnReflect(player, reflectType);
+                reflected = true;
+            }
+            if(reflected){
+                cooldownTime = cooldownDuration;
+                // maybe animate character here
             }
         }
 
