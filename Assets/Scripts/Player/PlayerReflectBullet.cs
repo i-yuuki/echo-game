@@ -12,13 +12,22 @@ namespace Echo.Player{
         [SerializeField] private float bulletAcceleration;
         [Range(0, 1)]
         [SerializeField] private float playerMovementRatio;
+        [SerializeField] private float cooldownDuration;
         [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
 
+        private float cooldownTime;
+
         private void Awake(){
             inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets(ReflectType.NORMAL)).AddTo(this);
             inputReader.OnSpecialAttack.Subscribe(_ => ReflectBullets(ReflectType.SPECIAL)).AddTo(this);
+        }
+
+        private void Update(){
+            if(cooldownTime > 0){
+                cooldownTime = Mathf.Max(0, cooldownTime - Time.deltaTime);
+            }
         }
 
         public void Init(PlayerBase player){
@@ -26,8 +35,9 @@ namespace Echo.Player{
         }
 
         private void ReflectBullets(ReflectType reflectType){
-            Debug.Log(reflectType);
             if(!player) return;
+            if(cooldownTime > 0) return;
+            cooldownTime = cooldownDuration;
             foreach(Collider collider in Physics.OverlapSphere(transform.position, ringRadius + ringWidth / 2)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
