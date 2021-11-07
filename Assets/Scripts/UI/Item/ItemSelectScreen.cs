@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using TMPro;
 using UniRx;
-using Echo.Input;
 using Echo.Item;
 
 namespace Echo.UI.Item{
@@ -12,12 +12,12 @@ namespace Echo.UI.Item{
 
         [SerializeField] private ItemListItem[] items;
         [SerializeField] private CanvasGroup container;
+        [SerializeField] private TextMeshProUGUI labelName;
+        [SerializeField] private TextMeshProUGUI labelDescription;
 
-        private void Start(){
+        private void Awake(){
             foreach(var item in items){
-                item.OnClick.Subscribe(_ => {
-                    Close();
-                }).AddTo(this);
+                item.OnSelect.Subscribe(_ => DisplayItemInfo(item.ItemInfo)).AddTo(this);
             }
         }
 
@@ -25,7 +25,7 @@ namespace Echo.UI.Item{
             container.interactable = true;
             gameObject.SetActive(true);
             container.DOFade(1, 0.3f).From(0).ToUniTask().Forget();
-            EventSystem.current.SetSelectedGameObject(items[0].gameObject);
+            items[0].Select();
             var tcs = new UniTaskCompletionSource<ItemInfo>();
             using(var cts = new CancellationTokenSource()){
                 foreach(var item in items){
@@ -45,6 +45,11 @@ namespace Echo.UI.Item{
             container.interactable = false;
             await container.DOFade(0, 0.2f).From(1);
             gameObject.SetActive(false);
+        }
+
+        private void DisplayItemInfo(ItemInfo itemInfo){
+            labelName.text = itemInfo.Name;
+            labelDescription.text = itemInfo.Description;
         }
 
     }

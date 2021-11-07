@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   delay: 1
-  room: {fileID: 260680828}
+  room: {fileID: 188449371}
   player: {fileID: 1023065064}
   itemSelect: {fileID: 574384746}
 --- !u!1 &260680826
