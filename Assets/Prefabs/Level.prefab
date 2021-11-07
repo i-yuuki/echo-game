@@ -2530,11 +2530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 498923390296408165}
     m_Modifications:
-    - target: {fileID: 1912765839710193777, guid: 1b0c8ca2bc7984a4e9268c59e2155197,
-        type: 3}
-      propertyPath: charge.value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2407590539128147706, guid: 1b0c8ca2bc7984a4e9268c59e2155197,
         type: 3}
       propertyPath: inputReader

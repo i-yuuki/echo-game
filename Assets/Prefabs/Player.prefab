@@ -107,6 +107,7 @@ MonoBehaviour:
   bulletAcceleration: 0.5
   playerMovementRatio: 0.5
   cooldownDuration: 0.5
+  slowmoCharge: 0.03
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
   prefabBullet: {fileID: 455717778730015856, guid: 4f1f315893dd1924bbbb4f5b662a0049,
     type: 3}

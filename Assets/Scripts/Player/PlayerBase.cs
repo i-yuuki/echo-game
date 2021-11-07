@@ -41,6 +41,12 @@ namespace Echo.Player{
             }
         }
 
+        public void ChargeSlowmo(float amount){
+            if(slowmo){
+                slowmo.Charge += amount;
+            }
+        }
+
         public void ApplyItemEffect(ItemInfo itemInfo){
             switch(itemInfo.Effect){
                 case Item.ItemEffectType.None: break;

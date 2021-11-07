@@ -15,6 +15,10 @@ namespace Echo.Player{
         [SerializeField] private InputReader inputReader;
 
         private readonly ReactiveProperty<bool> isInSlowmo = new ReactiveProperty<bool>();
+        public float Charge{
+            get => charge.Value;
+            set => charge.Value = Mathf.Clamp01(value);
+        }
 
         public IObservable<float> OnChargeChange => charge;
         public IObservable<bool> OnSlowmoChange => isInSlowmo;

@@ -14,6 +14,7 @@ namespace Echo.Player{
         [Range(0, 1)]
         [SerializeField] private float playerMovementRatio;
         [SerializeField] private float cooldownDuration;
+        [SerializeField] private float slowmoCharge;
         [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
@@ -68,6 +69,7 @@ namespace Echo.Player{
                 bullet.Direction = -bulletToReflect.Direction;
             }
             bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
+            player.ChargeSlowmo(slowmoCharge);
         }
 
     }
