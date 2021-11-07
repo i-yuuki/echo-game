@@ -58,21 +58,35 @@ namespace Echo.Player{
         }
 
         public void ReflectBullet(BulletBase bulletToReflect, ReflectType reflectType){
-            Destroy(bulletToReflect.gameObject);
-            PlayerBullet bulletPrefab;
-            switch(reflectType){
-                case ReflectType.NORMAL:  bulletPrefab = prefabBullet; break;
-                case ReflectType.SPECIAL: bulletPrefab = prefabPiercingBullet; break;
-                default: throw new NotImplementedException($"No prefab for reflect type {reflectType} exists");
-            };
-            var bullet = Instantiate(bulletPrefab, bulletToReflect.transform.position, Quaternion.identity);
-            var movement = player.Movement;
-            if(movement.sqrMagnitude > 0){
-                bullet.Direction = Vector3.Lerp(-bulletToReflect.Direction, movement.normalized, playerMovementRatio);
-            }else{
-                bullet.Direction = -bulletToReflect.Direction;
+            PlayerBullet CreateBullet(PlayerBullet prefab){
+                var bullet = Instantiate(prefab, bulletToReflect.transform.position, Quaternion.identity);
+                var movement = player.Movement;
+                if(movement.sqrMagnitude > 0){
+                    bullet.Direction = Vector3.Lerp(-bulletToReflect.Direction, movement.normalized, playerMovementRatio);
+                }else{
+                    bullet.Direction = -bulletToReflect.Direction;
+                }
+                bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
+                return bullet;
             }
-            bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
+            Destroy(bulletToReflect.gameObject);
+            switch(reflectType){
+                case ReflectType.NORMAL:
+                    for(int i = 0;i < player.Level;i ++){
+                        var bullet = CreateBullet(prefabBullet);
+                        bullet.Direction = Quaternion.AngleAxis((i - (player.Level - 1) / 2.0f) * 10, Vector3.up) * bullet.Direction;
+                    }
+                    break;
+                case ReflectType.SPECIAL:
+                {
+                    var bullet = CreateBullet(prefabPiercingBullet);
+                    float scale = 1 + (player.Level - 1) / 2.0f;
+                    bullet.transform.localScale = new Vector3(scale, scale, scale);
+                    break;
+                }
+                default:
+                    throw new NotImplementedException($"Reflect type {reflectType} not implemented");
+            };
             player.ChargeSlowmo(slowmoCharge);
         }
 
