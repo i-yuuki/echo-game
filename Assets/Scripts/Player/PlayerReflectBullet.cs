@@ -8,6 +8,7 @@ namespace Echo.Player{
     public class PlayerReflectBullet : MonoBehaviour{
         
         [SerializeField] private PlayerBase player;
+        [SerializeField] private ReflectType type;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private float bulletAcceleration;
@@ -26,8 +27,7 @@ namespace Echo.Player{
         }
 
         private void Awake(){
-            inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets(ReflectType.NORMAL)).AddTo(this);
-            inputReader.OnSpecialAttack.Subscribe(_ => ReflectBullets(ReflectType.SPECIAL)).AddTo(this);
+            inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets()).AddTo(this);
         }
 
         private void Update(){
@@ -36,7 +36,7 @@ namespace Echo.Player{
             }
         }
 
-        private void ReflectBullets(ReflectType reflectType){
+        private void ReflectBullets(){
             if(!player) return;
             if(cooldownTime > 0) return;
             bool reflected = false;
@@ -44,13 +44,17 @@ namespace Echo.Player{
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
                 var monoReflectable = reflectable as MonoBehaviour;
-                reflectable.OnReflect(player, reflectType);
+                reflectable.OnReflect(player, type);
                 reflected = true;
             }
             if(reflected){
                 cooldownTime = cooldownDuration;
                 // maybe animate character here
             }
+        }
+
+        public void CycleReflectType(){
+            type = (ReflectType)(((int)type + 1) % Enum.GetValues(typeof(ReflectType)).Length);
         }
 
         public void ReflectBullet(BulletBase bulletToReflect, ReflectType reflectType){
