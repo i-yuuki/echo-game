@@ -71,9 +71,6 @@ MonoBehaviour:
     value: 4
   maxHealth: 4
   noDamageDuration: 0.5
-  reflectBullet: {fileID: 2407590539128147706}
-  slowmo: {fileID: 1912765839710193777}
-  movement: {fileID: 3682477567055064201}
 --- !u!114 &3682477567055064201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8471774b011b648bfae452b801c6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 3682477567055064205}
   ringRadius: 0.85
   ringWidth: 0.6
   bulletAcceleration: 0.5

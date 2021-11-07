@@ -4,9 +4,10 @@ using UniRx;
 using Echo.Input;
 
 namespace Echo.Player{
+    [RequireComponent(typeof(PlayerBase))]
     public class PlayerReflectBullet : MonoBehaviour{
         
-        private PlayerBase player;
+        [SerializeField] private PlayerBase player;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private float bulletAcceleration;
@@ -19,6 +20,10 @@ namespace Echo.Player{
 
         private float cooldownTime;
 
+        private void Reset(){
+            player = GetComponent<PlayerBase>();
+        }
+
         private void Awake(){
             inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets(ReflectType.NORMAL)).AddTo(this);
             inputReader.OnSpecialAttack.Subscribe(_ => ReflectBullets(ReflectType.SPECIAL)).AddTo(this);
@@ -28,10 +33,6 @@ namespace Echo.Player{
             if(cooldownTime > 0){
                 cooldownTime = Mathf.Max(0, cooldownTime - Time.deltaTime);
             }
-        }
-
-        public void Init(PlayerBase player){
-            this.player = player;
         }
 
         private void ReflectBullets(ReflectType reflectType){

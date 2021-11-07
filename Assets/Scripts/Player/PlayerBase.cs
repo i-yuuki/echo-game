@@ -9,9 +9,9 @@ namespace Echo.Player{
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private int maxHealth;
         [SerializeField] private float noDamageDuration;
-        [SerializeField] private PlayerReflectBullet reflectBullet;
-        [SerializeField] private PlayerSlowmo slowmo;
-        [SerializeField] private PlayerMovement movement;
+        private PlayerReflectBullet reflectBullet;
+        private PlayerSlowmo slowmo;
+        private PlayerMovement movement;
 
         private float noDamageTime;
 
@@ -56,8 +56,10 @@ namespace Echo.Player{
             Damage(1);
         }
 
-        void Start(){
-            reflectBullet?.Init(this);
+        private void Awake(){
+            movement = GetComponent<PlayerMovement>();
+            reflectBullet = GetComponent<PlayerReflectBullet>();
+            slowmo = GetComponent<PlayerSlowmo>();
         }
 
         private void Update(){
