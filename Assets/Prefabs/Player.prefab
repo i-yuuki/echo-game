@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3682477567055064201}
   - component: {fileID: 2407590539128147706}
   - component: {fileID: 8943567986012619952}
+  - component: {fileID: 1912765839710193777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -71,6 +72,7 @@ MonoBehaviour:
   maxHealth: 4
   noDamageDuration: 0.5
   reflectBullet: {fileID: 2407590539128147706}
+  slowmo: {fileID: 1912765839710193777}
   movement: {fileID: 3682477567055064201}
 --- !u!114 &3682477567055064201
 MonoBehaviour:
@@ -125,6 +127,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3682477567055064205}
+--- !u!114 &1912765839710193777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682477567055064199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc2c0de03e43a6458650a3285cbf55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charge:
+    value: 0
+  minCharge: 0.25
+  timeScale: 0.5
+  consumption: 0.08
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
 --- !u!95 &6502732797595125565
 Animator:
   serializedVersion: 3

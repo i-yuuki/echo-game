@@ -341,6 +341,7 @@ MonoBehaviour:
   startOpen: 0
   virtualCamera: {fileID: 676999218}
   enemies: {fileID: 2147429781}
+  player: {fileID: 1023065064}
   exit: {fileID: 303295043}
 --- !u!114 &188449372
 MonoBehaviour:
@@ -411,6 +412,7 @@ MonoBehaviour:
   startOpen: 0
   virtualCamera: {fileID: 676999218}
   enemies: {fileID: 1500619071}
+  player: {fileID: 1023065064}
   exit: {fileID: 282776856}
 --- !u!114 &260680829
 MonoBehaviour:
@@ -1372,6 +1374,11 @@ PrefabInstance:
     - target: {fileID: 880851557112045768, guid: e0d47158ebf02b6499f91046c18723b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370246652339397228, guid: e0d47158ebf02b6499f91046c18723b1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1582596401315358983, guid: e0d47158ebf02b6499f91046c18723b1,
@@ -2507,6 +2514,7 @@ MonoBehaviour:
   startOpen: 0
   virtualCamera: {fileID: 676999218}
   enemies: {fileID: 587413566}
+  player: {fileID: 1023065064}
   exit: {fileID: 344065148}
 --- !u!114 &1291513570
 MonoBehaviour:

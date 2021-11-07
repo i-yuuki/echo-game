@@ -10,6 +10,7 @@ namespace Echo.Player{
         [SerializeField] private int maxHealth;
         [SerializeField] private float noDamageDuration;
         [SerializeField] private PlayerReflectBullet reflectBullet;
+        [SerializeField] private PlayerSlowmo slowmo;
         [SerializeField] private PlayerMovement movement;
 
         private float noDamageTime;
@@ -31,6 +32,12 @@ namespace Echo.Player{
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
             if(reflectBullet){
                 reflectBullet.ReflectBullet(bullet, reflectType);
+            }
+        }
+
+        public void StopSlowmo(){
+            if(slowmo){
+                slowmo.StopSlowmo();
             }
         }
 
