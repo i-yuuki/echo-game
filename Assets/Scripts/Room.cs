@@ -18,6 +18,9 @@ namespace Echo.Level{
 
         private void Start(){
             OnComplete.Subscribe(_ => {
+                foreach(var bullet in FindObjectsOfType<BulletBase>()){
+                    Destroy(bullet.gameObject);
+                }
                 player.StopSlowmo();
                 exit.Open();
             }).AddTo(this);
