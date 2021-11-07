@@ -8,8 +8,11 @@ namespace Echo.Player{
 
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private int maxHealth;
+        [SerializeField] private float noDamageDuration;
         [SerializeField] private PlayerReflectBullet reflectBullet;
         [SerializeField] private PlayerMovement movement;
+
+        private float noDamageTime;
 
         public int Health{
             get => health.Value;
@@ -19,8 +22,10 @@ namespace Echo.Player{
         public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
         public IObservable<int> OnHealthChange => health;
 
-        public void Damage(int damage){
+        public void Damage(int damage, bool force = false){
+            if(!force && noDamageTime > 0) return;
             Health -= damage;
+            noDamageTime = noDamageDuration;
         }
 
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
@@ -48,7 +53,10 @@ namespace Echo.Player{
             reflectBullet?.Init(this);
         }
 
-        void Update(){
+        private void Update(){
+            if(noDamageTime > 0){
+                noDamageTime = Mathf.Max(0, noDamageTime - Time.deltaTime);
+            }
         }
 
     }

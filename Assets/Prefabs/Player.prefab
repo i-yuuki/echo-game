@@ -69,6 +69,7 @@ MonoBehaviour:
   health:
     value: 4
   maxHealth: 4
+  noDamageDuration: 0.5
   reflectBullet: {fileID: 2407590539128147706}
   movement: {fileID: 3682477567055064201}
 --- !u!114 &3682477567055064201
