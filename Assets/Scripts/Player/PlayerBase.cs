@@ -29,6 +29,7 @@ namespace Echo.Player{
         public int MaxLevel => maxLevel;
         public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
         public IObservable<int> OnHealthChange => health;
+        public IObservable<int> OnLevelChange => level;
 
         public void Damage(int damage, bool force = false){
             if(!force && noDamageTime > 0) return;
