@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel: {fileID: 11400000, guid: a0098505050a46543bbba361dd4b56c5, type: 2}
+  ignoreSameCue: 0
   allowLoop: 1
   source: {fileID: 1752294683}
 --- !u!82 &1752294683
@@ -849,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel: {fileID: 11400000, guid: 09f2318ca5386d94e9835fb99de54e4c, type: 2}
+  ignoreSameCue: 1
   allowLoop: 1
   source: {fileID: 1921551923}
 --- !u!82 &1921551923
