@@ -34,7 +34,7 @@ namespace Echo.Enemy{
             }
         }
 
-        private void Die(){
+        public void Die(){
             if(!isAlive) return;
             isAlive = false;
             Destroy(gameObject);
