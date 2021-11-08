@@ -39,13 +39,7 @@ namespace Echo.Enemy{
         }
 
         private void OnCollisionEnter(Collision other){
-            var player = other.gameObject.GetComponent<PlayerBase>();
-            if(player == null){
-                bullet.Bounce(other.contacts[0].normal);
-            }else{
-                Destroy(gameObject);
-                player.Damage(1);
-            }
+            bullet.Bounce(other.contacts[0].normal);
         }
 
         void IReflectable.OnReflect(PlayerBase player, ReflectType reflectType){

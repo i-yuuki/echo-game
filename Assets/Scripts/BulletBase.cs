@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UniRx;
 
 namespace Echo{
     public class BulletBase : MonoBehaviour, IBullet{
@@ -6,6 +7,7 @@ namespace Echo{
         [SerializeField] private Vector3 direction;
         [SerializeField] private float speed = 1;
         [SerializeField] private int maxWallBounces;
+        [SerializeField] private CollisionWithPlayer collisionWithPlayer;
         private int wallBounces;
         private Rigidbody rb;
 
@@ -23,6 +25,10 @@ namespace Echo{
 
         private void Start(){
             rb = GetComponentInChildren<Rigidbody>();
+            collisionWithPlayer.OnPlayerCollide.Subscribe(player => {
+                Destroy(gameObject);
+                player.Damage(1);
+            }).AddTo(this);
         }
 
         private void FixedUpdate(){

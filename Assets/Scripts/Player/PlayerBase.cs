@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Item;
 
 namespace Echo.Player{
-    public class PlayerBase : MonoBehaviour, IPlayerBulletAttackable{
+    public class PlayerBase : MonoBehaviour{
 
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private IntReactiveProperty level;
@@ -69,10 +69,6 @@ namespace Echo.Player{
                 case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
                 default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
             }
-        }
-
-        void IPlayerBulletAttackable.OnPlayerBulletHit(PlayerBullet bullet){
-            Damage(1);
         }
 
         private void Awake(){
