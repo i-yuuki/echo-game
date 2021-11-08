@@ -15,7 +15,10 @@ namespace Echo.Player{
         private PlayerSlowmo slowmo;
         private PlayerMovement movement;
 
+        private bool isAlive;
         private float noDamageTime;
+
+        private readonly Subject<Unit> onDeath = new Subject<Unit>();
 
         public int Health{
             get => health.Value;
@@ -30,11 +33,21 @@ namespace Echo.Player{
         public Vector3 Movement => movement ? movement.Movement : Vector3.zero;
         public IObservable<int> OnHealthChange => health;
         public IObservable<int> OnLevelChange => level;
+        public IObservable<Unit> OnDeath => onDeath;
 
         public void Damage(int damage, bool force = false){
             if(!force && noDamageTime > 0) return;
             Health -= damage;
             noDamageTime = noDamageDuration;
+            if(Health <= 0){
+                Die();
+            }
+        }
+
+        public void Die(){
+            if(!isAlive) return;
+            isAlive = false;
+            onDeath.OnNext(Unit.Default);
         }
 
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
@@ -75,6 +88,10 @@ namespace Echo.Player{
             movement = GetComponent<PlayerMovement>();
             reflectBullet = GetComponent<PlayerReflectBullet>();
             slowmo = GetComponent<PlayerSlowmo>();
+        }
+
+        private void Start(){
+            isAlive = true;
         }
 
         private void Update(){
