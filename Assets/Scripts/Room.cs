@@ -14,6 +14,9 @@ namespace Echo.Level{
         [SerializeField] private PlayerBase player;
         [SerializeField] private RoomDoor exit;
 
+        private readonly Subject<Unit> onEnter = new Subject<Unit>();
+
+        public IObservable<Unit> OnEnter => onEnter;
         public IObservable<Unit> OnComplete => enemies.OnAllEnemiesDied;
 
         private void Start(){
@@ -32,6 +35,7 @@ namespace Echo.Level{
         public void Enter(){
             virtualCamera.Follow = transform;
             enemies.ActivateAll();
+            onEnter.OnNext(Unit.Default);
         }
 
     }
