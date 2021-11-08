@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UniRx;
+using Echo.Audio;
 using Echo.Input;
 
 namespace Echo.Player{
@@ -19,6 +20,8 @@ namespace Echo.Player{
         [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
+        [SerializeField] private AudioCue se;
+        [SerializeField] private AudioChannel seChannel;
 
         private float cooldownTime;
 
@@ -49,6 +52,7 @@ namespace Echo.Player{
             }
             if(reflected){
                 cooldownTime = cooldownDuration;
+                seChannel.Request(se);
                 // maybe animate character here
             }
         }

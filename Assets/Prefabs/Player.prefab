@@ -117,6 +117,8 @@ MonoBehaviour:
     type: 3}
   prefabPiercingBullet: {fileID: 455717778730015856, guid: 867f5893265db5f42b45e364fec52e6a,
     type: 3}
+  se: {fileID: 11400000, guid: 7f12796cbaa0d6542b14516dfce4d5df, type: 2}
+  seChannel: {fileID: 11400000, guid: a0098505050a46543bbba361dd4b56c5, type: 2}
 --- !u!114 &8943567986012619952
 MonoBehaviour:
   m_ObjectHideFlags: 0
