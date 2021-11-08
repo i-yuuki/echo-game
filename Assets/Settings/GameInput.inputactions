@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "NormalAttack",
+                    "name": "Reflect",
                     "type": "Button",
                     "id": "273f4e5d-73d6-4043-9452-a259476efdd3",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SpecialAttack",
+                    "name": "Slowmo",
                     "type": "Button",
                     "id": "0ba21313-a1b1-4c83-bea1-6055babd1340",
                     "expectedControlType": "Button",
@@ -134,7 +134,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "NormalAttack",
+                    "action": "Reflect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -145,7 +145,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NormalAttack",
+                    "action": "Reflect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -156,7 +156,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "SpecialAttack",
+                    "action": "Slowmo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -167,7 +167,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SpecialAttack",
+                    "action": "Slowmo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

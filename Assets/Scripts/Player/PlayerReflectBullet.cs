@@ -27,7 +27,7 @@ namespace Echo.Player{
         }
 
         private void Awake(){
-            inputReader.OnNormalAttack.Subscribe(_  => ReflectBullets()).AddTo(this);
+            inputReader.OnReflect.Subscribe(_  => ReflectBullets()).AddTo(this);
         }
 
         private void Update(){

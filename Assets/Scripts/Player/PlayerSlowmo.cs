@@ -28,8 +28,7 @@ namespace Echo.Player{
         }
 
         private void Awake(){
-            // 仮
-            inputReader.OnInteract.Subscribe(_ => ToggleSlowmo()).AddTo(this);
+            inputReader.OnSlowmo.Subscribe(_ => ToggleSlowmo()).AddTo(this);
         }
 
         private void Update(){

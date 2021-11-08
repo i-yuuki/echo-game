@@ -11,13 +11,13 @@ namespace Echo.Input{
 
         private readonly ReactiveProperty<Vector2> move = new ReactiveProperty<Vector2>(Vector2.zero);
         private readonly Subject<Unit> onInteract = new Subject<Unit>();
-        private readonly Subject<Unit> onNormalAttack = new Subject<Unit>();
-        private readonly Subject<Unit> onSpecialAttack = new Subject<Unit>();
+        private readonly Subject<Unit> onReflect = new Subject<Unit>();
+        private readonly Subject<Unit> onSlowmo = new Subject<Unit>();
 
         public IObservable<Vector2> OnMove => move;
         public IObservable<Unit> OnInteract => onInteract;
-        public IObservable<Unit> OnNormalAttack => onNormalAttack;
-        public IObservable<Unit> OnSpecialAttack => onSpecialAttack;
+        public IObservable<Unit> OnReflect => onReflect;
+        public IObservable<Unit> OnSlowmo => onSlowmo;
 
         public void EnableGameplayInput(){
             input.Gameplay.Enable();
@@ -49,15 +49,15 @@ namespace Echo.Input{
             move.Value = ctx.ReadValue<Vector2>();
         }
 
-        void GameInput.IGameplayActions.OnNormalAttack(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnReflect(InputAction.CallbackContext ctx){
             if(ctx.phase == InputActionPhase.Performed){
-                onNormalAttack.OnNext(Unit.Default);
+                onReflect.OnNext(Unit.Default);
             }
         }
 
-        void GameInput.IGameplayActions.OnSpecialAttack(InputAction.CallbackContext ctx){
+        void GameInput.IGameplayActions.OnSlowmo(InputAction.CallbackContext ctx){
             if(ctx.phase == InputActionPhase.Performed){
-                onSpecialAttack.OnNext(Unit.Default);
+                onSlowmo.OnNext(Unit.Default);
             }
         }
 

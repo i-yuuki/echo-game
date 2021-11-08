@@ -37,7 +37,7 @@ namespace Echo
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""NormalAttack"",
+                    ""name"": ""Reflect"",
                     ""type"": ""Button"",
                     ""id"": ""273f4e5d-73d6-4043-9452-a259476efdd3"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ namespace Echo
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""SpecialAttack"",
+                    ""name"": ""Slowmo"",
                     ""type"": ""Button"",
                     ""id"": ""0ba21313-a1b1-4c83-bea1-6055babd1340"",
                     ""expectedControlType"": ""Button"",
@@ -149,7 +149,7 @@ namespace Echo
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""NormalAttack"",
+                    ""action"": ""Reflect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -160,7 +160,7 @@ namespace Echo
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""NormalAttack"",
+                    ""action"": ""Reflect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -171,7 +171,7 @@ namespace Echo
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""SpecialAttack"",
+                    ""action"": ""Slowmo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -182,7 +182,7 @@ namespace Echo
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""SpecialAttack"",
+                    ""action"": ""Slowmo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -218,8 +218,8 @@ namespace Echo
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
-            m_Gameplay_NormalAttack = m_Gameplay.FindAction("NormalAttack", throwIfNotFound: true);
-            m_Gameplay_SpecialAttack = m_Gameplay.FindAction("SpecialAttack", throwIfNotFound: true);
+            m_Gameplay_Reflect = m_Gameplay.FindAction("Reflect", throwIfNotFound: true);
+            m_Gameplay_Slowmo = m_Gameplay.FindAction("Slowmo", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -271,16 +271,16 @@ namespace Echo
         private IGameplayActions m_GameplayActionsCallbackInterface;
         private readonly InputAction m_Gameplay_Move;
         private readonly InputAction m_Gameplay_Interact;
-        private readonly InputAction m_Gameplay_NormalAttack;
-        private readonly InputAction m_Gameplay_SpecialAttack;
+        private readonly InputAction m_Gameplay_Reflect;
+        private readonly InputAction m_Gameplay_Slowmo;
         public struct GameplayActions
         {
             private @GameInput m_Wrapper;
             public GameplayActions(@GameInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Gameplay_Move;
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
-            public InputAction @NormalAttack => m_Wrapper.m_Gameplay_NormalAttack;
-            public InputAction @SpecialAttack => m_Wrapper.m_Gameplay_SpecialAttack;
+            public InputAction @Reflect => m_Wrapper.m_Gameplay_Reflect;
+            public InputAction @Slowmo => m_Wrapper.m_Gameplay_Slowmo;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -296,12 +296,12 @@ namespace Echo
                     @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                    @NormalAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
-                    @NormalAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
-                    @NormalAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNormalAttack;
-                    @SpecialAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
-                    @SpecialAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
-                    @SpecialAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpecialAttack;
+                    @Reflect.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReflect;
+                    @Reflect.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReflect;
+                    @Reflect.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReflect;
+                    @Slowmo.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowmo;
+                    @Slowmo.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowmo;
+                    @Slowmo.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowmo;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -312,12 +312,12 @@ namespace Echo
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
-                    @NormalAttack.started += instance.OnNormalAttack;
-                    @NormalAttack.performed += instance.OnNormalAttack;
-                    @NormalAttack.canceled += instance.OnNormalAttack;
-                    @SpecialAttack.started += instance.OnSpecialAttack;
-                    @SpecialAttack.performed += instance.OnSpecialAttack;
-                    @SpecialAttack.canceled += instance.OnSpecialAttack;
+                    @Reflect.started += instance.OnReflect;
+                    @Reflect.performed += instance.OnReflect;
+                    @Reflect.canceled += instance.OnReflect;
+                    @Slowmo.started += instance.OnSlowmo;
+                    @Slowmo.performed += instance.OnSlowmo;
+                    @Slowmo.canceled += instance.OnSlowmo;
                 }
             }
         }
@@ -344,8 +344,8 @@ namespace Echo
         {
             void OnMove(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
-            void OnNormalAttack(InputAction.CallbackContext context);
-            void OnSpecialAttack(InputAction.CallbackContext context);
+            void OnReflect(InputAction.CallbackContext context);
+            void OnSlowmo(InputAction.CallbackContext context);
         }
     }
 }
