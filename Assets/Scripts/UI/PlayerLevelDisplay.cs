@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
-using Echo.Extensions;
 using Echo.Player;
-using TMPro;
 
 namespace Echo.UI{
     public class PlayerLevelDisplay : MonoBehaviour{
         
         [SerializeField] PlayerBase player;
-        [SerializeField] TextMeshProUGUI labelLevel;
+        [SerializeField] Slider slider;
 
         private void Start(){
-            player.OnLevelChange.Subscribe(level => labelLevel.text = level.ToString()).AddTo(this);
+            slider.maxValue = player.MaxLevel;
+            player.OnLevelChange.Subscribe(level => slider.value = level).AddTo(this);
         }
 
     }
