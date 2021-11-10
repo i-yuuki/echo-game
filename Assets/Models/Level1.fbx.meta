@@ -6,7 +6,37 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: ExitOpen
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_MTR
+    second: {fileID: 2100000, guid: 81e4be1290449af4aa59423dd5158c32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Myroom_BookShelf_Empty_MTR
+    second: {fileID: 2100000, guid: 5dd30946f26c69e4296fa41a1a89ecda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Myroom_Floor_MTR
+    second: {fileID: 2100000, guid: c6eca6d86418d564a862f1c2fdb854cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Myroom_Torch_MTR
+    second: {fileID: 2100000, guid: 19db23dcd80a47249bff45af6e3621d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Myroom_wall_mtr
+    second: {fileID: 2100000, guid: 32bab74a8fcb980499bc7819ef3205ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pole_mtrl
+    second: {fileID: 2100000, guid: 87ebf20be2ec6ba449938ac5624eee21, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
