@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 2125845b1c943154491ee99fc48b1c7e
+guid: b760ad1d33256d54aa46387a7d205065
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: tutrialmtr
-    second: {fileID: 2100000, guid: 2bd30a4851eac094d88c766b2b1cffc2, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
