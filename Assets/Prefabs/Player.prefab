@@ -126,6 +126,8 @@ MonoBehaviour:
   player: {fileID: 3682477567055064205}
   ringRadius: 0.85
   ringWidth: 0.6
+  ringWidthLevel: 0
+  ringWidthPerLevel: 0.1
   bulletAcceleration: 0.5
   playerMovementRatio: 0.5
   cooldownDuration: 0.5

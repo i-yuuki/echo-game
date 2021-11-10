@@ -11,6 +11,8 @@ namespace Echo.Player{
         [SerializeField] private PlayerBase player;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
+        [SerializeField] private int ringWidthLevel;
+        [SerializeField] private float ringWidthPerLevel;
         [SerializeField] private float bulletAcceleration;
         [Range(0, 1)]
         [SerializeField] private float playerMovementRatio;
@@ -29,6 +31,10 @@ namespace Echo.Player{
         public ReflectType ReflectType{
             get => type.Value;
             set => type.Value = value;
+        }
+        public int RingWidthLevel{
+            get => ringWidthLevel;
+            set => ringWidthLevel = value;
         }
 
         public IObservable<ReflectType> OnReflectTypeChange => type;
@@ -51,7 +57,8 @@ namespace Echo.Player{
             if(!player) return;
             if(cooldownTime > 0) return;
             bool reflected = false;
-            foreach(Collider collider in Physics.OverlapSphere(transform.position, ringRadius + ringWidth / 2)){
+            float radius = ringRadius + ringWidth / 2 + ringWidthLevel * ringWidthPerLevel;
+            foreach(Collider collider in Physics.OverlapSphere(transform.position, radius)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
                 var monoReflectable = reflectable as MonoBehaviour;

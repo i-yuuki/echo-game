@@ -79,7 +79,11 @@ namespace Echo.Player{
                         Level = 1;
                     }
                     break;
-                case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
+                case Item.ItemEffectType.IncreaseRingSize: 
+                    if(reflectBullet){
+                        reflectBullet.RingWidthLevel ++;
+                    }
+                    break;
                 default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
             }
         }
