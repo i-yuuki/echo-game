@@ -9,7 +9,6 @@ namespace Echo.Player{
     public class PlayerReflectBullet : MonoBehaviour{
         
         [SerializeField] private PlayerBase player;
-        [SerializeField] private ReflectType type;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private float bulletAcceleration;
@@ -24,12 +23,15 @@ namespace Echo.Player{
         [SerializeField] private AudioCue se;
         [SerializeField] private AudioChannel seChannel;
 
+        private readonly ReactiveProperty<ReflectType> type = new ReactiveProperty<ReflectType>();
         private float cooldownTime;
 
         public ReflectType ReflectType{
-            get => type;
-            set => type = value;
+            get => type.Value;
+            set => type.Value = value;
         }
+
+        public IObservable<ReflectType> OnReflectTypeChange => type;
 
         private void Reset(){
             player = GetComponent<PlayerBase>();
@@ -53,7 +55,7 @@ namespace Echo.Player{
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
                 var monoReflectable = reflectable as MonoBehaviour;
-                reflectable.OnReflect(player, type);
+                reflectable.OnReflect(player, type.Value);
                 reflected = true;
             }
             if(reflected){
@@ -64,7 +66,7 @@ namespace Echo.Player{
         }
 
         public void ToggleReflectType(){
-            type = type == ReflectType.SPREADING ? ReflectType.PIERCING : ReflectType.SPREADING;
+            ReflectType = ReflectType == ReflectType.SPREADING ? ReflectType.PIERCING : ReflectType.SPREADING;
         }
 
         public void ReflectBullet(BulletBase bulletToReflect, ReflectType reflectType){

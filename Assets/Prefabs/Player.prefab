@@ -89,7 +89,7 @@ MonoBehaviour:
   health:
     value: 4
   level:
-    value: 1
+    value: 0
   maxHealth: 4
   maxLevel: 5
   noDamageDuration: 0.5
@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3682477567055064205}
-  type: 0
   ringRadius: 0.85
   ringWidth: 0.6
   bulletAcceleration: 0.5
