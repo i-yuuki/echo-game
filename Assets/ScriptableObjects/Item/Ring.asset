@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ring
   m_EditorClassIdentifier: 
   name: "\u5F37\u5316\u30EA\u30F3\u30B0"
-  icon: {fileID: 21300000, guid: 03938d7a03cc78c4e82fa74f969240f9, type: 3}
+  icon: {fileID: 21300000, guid: efa5cd70fdf286f45a6006a9cd04334a, type: 3}
   description: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\u3059\u308B"
   effect: 2
