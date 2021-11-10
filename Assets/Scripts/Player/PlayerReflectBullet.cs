@@ -20,6 +20,7 @@ namespace Echo.Player{
         [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
+        [SerializeField] private Animator animator;
         [SerializeField] private AudioCue se;
         [SerializeField] private AudioChannel seChannel;
 
@@ -53,7 +54,7 @@ namespace Echo.Player{
             if(reflected){
                 cooldownTime = cooldownDuration;
                 seChannel.Request(se);
-                // maybe animate character here
+                animator.SetTrigger("Reflect");
             }
         }
 

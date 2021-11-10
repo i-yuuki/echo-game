@@ -1,32 +1,12 @@
 fileFormatVersion: 2
-guid: f54aa0542fd18e945a13945a973ab449
+guid: b16585af064c45e49b1d0931443aec82
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: Walk
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kaensai_SD_009_UV_SD_011_aiToon_Eye
-    second: {fileID: 2100000, guid: b1e35473c85b20d468899d3c98e2b7ed, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kaensai_SD_009_UV_SD_011_aiToon_clothes
-    second: {fileID: 2100000, guid: 453f0b73b4d0cad42a71eee3ee2d6792, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kaensai_SD_009_UV_SD_011_aiToon_hair
-    second: {fileID: 2100000, guid: dc4823ae8f4043a4eb8e574ca79327f5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kaensai_SD_009_UV_SD_011_aiToon_skin
-    second: {fileID: 2100000, guid: 21e6346fc187f104a8181d2521ca1f82, type: 2}
+      74: 8509064983561302538
+    second: idle_main
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -53,36 +33,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Walk
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 1
-      lastFrame: 47
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -101,7 +52,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
+    preserveHierarchy: 1
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
