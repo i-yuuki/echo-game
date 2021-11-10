@@ -26,6 +26,11 @@ namespace Echo.Player{
 
         private float cooldownTime;
 
+        public ReflectType ReflectType{
+            get => type;
+            set => type = value;
+        }
+
         private void Reset(){
             player = GetComponent<PlayerBase>();
         }
@@ -58,8 +63,8 @@ namespace Echo.Player{
             }
         }
 
-        public void CycleReflectType(){
-            type = (ReflectType)(((int)type + 1) % Enum.GetValues(typeof(ReflectType)).Length);
+        public void ToggleReflectType(){
+            type = type == ReflectType.SPREADING ? ReflectType.PIERCING : ReflectType.SPREADING;
         }
 
         public void ReflectBullet(BulletBase bulletToReflect, ReflectType reflectType){
@@ -77,12 +82,15 @@ namespace Echo.Player{
             Destroy(bulletToReflect.gameObject);
             switch(reflectType){
                 case ReflectType.NORMAL:
-                    for(int i = 0;i < player.Level;i ++){
+                    CreateBullet(prefabBullet);
+                    break;
+                case ReflectType.SPREADING:
+                    for(int i = 0;i < player.Level + 1;i ++){
                         var bullet = CreateBullet(prefabBullet);
-                        bullet.Direction = Quaternion.AngleAxis((i - (player.Level - 1) / 2.0f) * 10, Vector3.up) * bullet.Direction;
+                        bullet.Direction = Quaternion.AngleAxis((i - player.Level / 2.0f) * 10, Vector3.up) * bullet.Direction;
                     }
                     break;
-                case ReflectType.SPECIAL:
+                case ReflectType.PIERCING:
                 {
                     var bullet = CreateBullet(prefabPiercingBullet);
                     float scale = 1 + (player.Level - 1) / 2.0f;

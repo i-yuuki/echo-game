@@ -72,15 +72,24 @@ namespace Echo.Player{
             switch(itemInfo.Effect){
                 case Item.ItemEffectType.None: break;
                 case Item.ItemEffectType.Heal:             Health ++; break;
-                case Item.ItemEffectType.LevelUp:          Level ++; break;
+                case Item.ItemEffectType.LevelUp:          LevelUp(); break;
                 case Item.ItemEffectType.CycleBulletType:
                     if(reflectBullet){
-                        reflectBullet.CycleReflectType();
+                        reflectBullet.ToggleReflectType();
                         Level = 1;
                     }
                     break;
                 case Item.ItemEffectType.IncreaseRingSize: /* TODO */ break;
                 default: throw new NotImplementedException($"Item effect {itemInfo.Effect} not implemented");
+            }
+        }
+
+        private void LevelUp(){
+            if(reflectBullet && reflectBullet.ReflectType == ReflectType.NORMAL){
+                reflectBullet.ReflectType = ReflectType.SPREADING;
+                Level = 1;
+            }else{
+                Level ++;
             }
         }
 
