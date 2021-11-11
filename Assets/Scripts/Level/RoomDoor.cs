@@ -7,8 +7,12 @@ namespace Echo.Level{
         [SerializeField] private new Collider collider;
 
         public void Open(){
-            animator.SetTrigger("Open");
-            collider.enabled = false;
+            if(animator){
+                animator.SetTrigger("Open");
+            }
+            if(collider){
+                collider.enabled = false;
+            }
         }
 
     }
