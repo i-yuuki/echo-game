@@ -4,7 +4,7 @@ using UniRx;
 
 namespace Echo.Audio{
     [CreateAssetMenu(fileName = "New Audio Channel", menuName = "ScriptableObject/Audio/AudioChannel")]
-    public class AudioChannel : ScriptableObject{
+    public sealed class AudioChannel : ScriptableObject{
 
         private readonly Subject<AudioCue> onRequest = new Subject<AudioCue>();
         private readonly Subject<Unit> onStopRequest = new Subject<Unit>();

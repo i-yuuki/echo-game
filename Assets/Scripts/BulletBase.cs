@@ -2,7 +2,7 @@
 using UniRx;
 
 namespace Echo{
-    public class BulletBase : MonoBehaviour, IBullet{
+    public sealed class BulletBase : MonoBehaviour, IBullet{
 
         [SerializeField] private Vector3 direction;
         [SerializeField] private float speed = 1;

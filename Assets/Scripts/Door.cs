@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Echo{
-    public class Door : MonoBehaviour{
+    public sealed class Door : MonoBehaviour{
 
         [SerializeField] private bool isLocked;
 

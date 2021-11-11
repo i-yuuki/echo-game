@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class AutoDestroyParticle : MonoBehaviour{
+public sealed class AutoDestroyParticle : MonoBehaviour{
 
     ParticleSystem[] particles;
 

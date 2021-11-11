@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Player;
 
 namespace Echo{
-    public class CollisionWithPlayer : MonoBehaviour{
+    public sealed class CollisionWithPlayer : MonoBehaviour{
 
         private readonly Subject<PlayerBase> onPlayerCollide = new Subject<PlayerBase>();
 

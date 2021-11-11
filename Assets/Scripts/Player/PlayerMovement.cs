@@ -3,7 +3,7 @@ using UniRx;
 using Echo.Input;
 
 namespace Echo.Player{
-    public class PlayerMovement : MonoBehaviour{
+    public sealed class PlayerMovement : MonoBehaviour{
 
         [SerializeField] private float walkSpeed;
         [SerializeField] private float rotationSpeed;

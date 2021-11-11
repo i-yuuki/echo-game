@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Item;
 
 namespace Echo.Player{
-    public class PlayerBase : MonoBehaviour{
+    public sealed class PlayerBase : MonoBehaviour{
 
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private IntReactiveProperty level;

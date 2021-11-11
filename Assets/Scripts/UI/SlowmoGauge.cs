@@ -5,7 +5,7 @@ using Echo.Extensions;
 using Echo.Player;
 
 namespace Echo.UI{
-    public class SlowmoGauge : MonoBehaviour{
+    public sealed class SlowmoGauge : MonoBehaviour{
         
         [SerializeField] PlayerSlowmo playerSlowmo;
         [SerializeField] Slider slider;

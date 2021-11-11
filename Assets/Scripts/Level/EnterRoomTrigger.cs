@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Echo.Level{
-    public class EnterRoomTrigger : MonoBehaviour{
+    public sealed class EnterRoomTrigger : MonoBehaviour{
 
         [SerializeField] private Room room;
 

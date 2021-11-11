@@ -5,7 +5,7 @@ using Echo.Input;
 
 namespace Echo.Player{
     [RequireComponent(typeof(PlayerBase))]
-    public class PlayerSlowmo : MonoBehaviour{
+    public sealed class PlayerSlowmo : MonoBehaviour{
         
         private PlayerBase player;
         [SerializeField] private FloatReactiveProperty charge;

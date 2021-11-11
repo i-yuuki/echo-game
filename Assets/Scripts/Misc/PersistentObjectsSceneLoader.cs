@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PersistentObjectsSceneLoader{
+public sealed class PersistentObjectsSceneLoader{
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void LoadPersistentObjectsScene(){

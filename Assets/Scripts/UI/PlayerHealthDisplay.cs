@@ -5,7 +5,7 @@ using Echo.Extensions;
 using Echo.Player;
 
 namespace Echo.UI{
-    public class PlayerHealthDisplay : MonoBehaviour{
+    public sealed class PlayerHealthDisplay : MonoBehaviour{
         
         [SerializeField] private float spriteSize;
         [SerializeField] PlayerBase player;

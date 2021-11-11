@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Echo.Level{
-    public class RoomDoor : MonoBehaviour{
+    public sealed class RoomDoor : MonoBehaviour{
 
         [SerializeField] private Animator animator;
         [SerializeField] private new Collider collider;

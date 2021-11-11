@@ -6,7 +6,7 @@ using Echo.Input;
 using Echo.UI;
 
 namespace Echo{
-    public class GameManager : MonoBehaviour{
+    public sealed class GameManager : MonoBehaviour{
 
         public static GameManager Instance{ get; private set; }
 

@@ -7,7 +7,7 @@ using Echo.Extensions;
 using Echo.Player;
 
 namespace Echo.Boss{
-    public class TheCrowd : MonoBehaviour, IPlayerBulletAttackable{
+    public sealed class TheCrowd : MonoBehaviour, IPlayerBulletAttackable{
 
         [SerializeField] private EnemyBase enemy;
         [SerializeField] private EnemySensePlayer enemySensePlayer;

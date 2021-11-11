@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Player;
 
 namespace Echo.UI{
-    public class PlayerLevelDisplay : MonoBehaviour{
+    public sealed class PlayerLevelDisplay : MonoBehaviour{
         
         [SerializeField] PlayerBase player;
         [SerializeField] Slider slider;

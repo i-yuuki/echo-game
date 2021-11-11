@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Player;
 
 namespace Echo.Enemy{
-    public class EnemySensePlayer : MonoBehaviour
+    public sealed class EnemySensePlayer : MonoBehaviour
     {
         
         private PlayerBase playerNearby;

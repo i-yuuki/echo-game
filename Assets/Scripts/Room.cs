@@ -6,7 +6,7 @@ using UniRx;
 using Echo.Player;
 
 namespace Echo.Level{
-    public class Room : MonoBehaviour{
+    public sealed class Room : MonoBehaviour{
 
         [SerializeField] private bool startOpen;
         [SerializeField] private CinemachineVirtualCamera virtualCamera;

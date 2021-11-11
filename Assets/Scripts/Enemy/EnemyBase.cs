@@ -4,7 +4,7 @@ using UniRx;
 using Echo.Player;
 
 namespace Echo.Enemy{
-    public class EnemyBase : MonoBehaviour
+    public sealed class EnemyBase : MonoBehaviour
     {
 
         [SerializeField] private IntReactiveProperty health;

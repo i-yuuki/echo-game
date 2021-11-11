@@ -6,7 +6,7 @@ using Echo.Input;
 
 namespace Echo.Player{
     [RequireComponent(typeof(PlayerBase))]
-    public class PlayerReflectBullet : MonoBehaviour{
+    public sealed class PlayerReflectBullet : MonoBehaviour{
         
         [SerializeField] private PlayerBase player;
         [SerializeField] private float ringRadius;
