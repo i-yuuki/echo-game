@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BookShelf_Empty_MTR
-    second: {fileID: 2100000, guid: b1d036ad44e3e564989a03a550c503a4, type: 2}
+    second: {fileID: 2100000, guid: 5dd30946f26c69e4296fa41a1a89ecda, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Chair_MTR
-    second: {fileID: 2100000, guid: 67aac05d845047b478dbd94174509470, type: 2}
+    second: {fileID: 2100000, guid: 52867367ffa387045a039dbea56d4a2c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Floor_MTR
-    second: {fileID: 2100000, guid: ff89af294c624014d8c237fef046c4e4, type: 2}
+    second: {fileID: 2100000, guid: c6eca6d86418d564a862f1c2fdb854cc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Torch_MTR
-    second: {fileID: 2100000, guid: f1375ab708d0fa345bc84a2f8a869978, type: 2}
+    second: {fileID: 2100000, guid: 19db23dcd80a47249bff45af6e3621d7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -38,12 +38,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hasigo_mtr
-    second: {fileID: 2100000, guid: 8f6faf424f7d6284d90c6b6e33bbf0cf, type: 2}
+    second: {fileID: 2100000, guid: 4b0fa6dc3c43f974eabd688bfea48f07, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wall_mtr
-    second: {fileID: 2100000, guid: 463183802954b4749abab2d89792144f, type: 2}
+    second: {fileID: 2100000, guid: 32bab74a8fcb980499bc7819ef3205ed, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
