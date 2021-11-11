@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6707172455446417841}
   - component: {fileID: 4476234598770173526}
   - component: {fileID: 5660264450883757291}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: The Crowd Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,10 +114,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5660264450883757295}
     m_Modifications:
+    - target: {fileID: 467513690978140799, guid: 13403f751cf44d94eabbed89fde1d312,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101405934159580384, guid: 13403f751cf44d94eabbed89fde1d312,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2225853617279941316, guid: 13403f751cf44d94eabbed89fde1d312,
         type: 3}
       propertyPath: m_Name
       value: Shockwave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225853617279941316, guid: 13403f751cf44d94eabbed89fde1d312,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5669917769352331161, guid: 13403f751cf44d94eabbed89fde1d312,
         type: 3}
@@ -173,6 +188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917154743816211772, guid: 13403f751cf44d94eabbed89fde1d312,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13403f751cf44d94eabbed89fde1d312, type: 3}
