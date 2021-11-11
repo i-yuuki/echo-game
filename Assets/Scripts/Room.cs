@@ -27,15 +27,15 @@ namespace Echo.Level{
                 player.StopSlowmo();
                 exit.Open();
             }).AddTo(this);
-            if(startOpen){
-                exit.Open();
-            }
         }
 
         public void Enter(){
             virtualCamera.Follow = transform;
             enemies.ActivateAll();
             onEnter.OnNext(Unit.Default);
+            if(startOpen){
+                exit.Open();
+            }
         }
 
     }
