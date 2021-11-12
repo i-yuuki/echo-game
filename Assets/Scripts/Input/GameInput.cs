@@ -187,6 +187,93 @@ namespace Echo
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""1f2a9c31-11df-4dea-a734-c5ddcfe469e3"",
+            ""actions"": [
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""d455a759-53ec-4e7e-9ed7-2c05126fafd9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""273de8ce-16cc-4224-ae65-5a8fdf4ace07"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""e90e1ffe-b979-4b32-80a6-789cbea2de69"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fe5a9a3b-b111-4776-8990-69484ab336d8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5238e1fb-bb73-47fc-b3e5-603f88016dee"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6a31fc7-9aa2-4819-8fb8-1be0e70a4b8c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dee78b6a-a3b6-427b-9f73-896773eada4a"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dc68a37-8738-4810-a03a-b49311e8de50"",
+                    ""path"": ""*/{Submit}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;Gamepad"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -220,6 +307,11 @@ namespace Echo
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             m_Gameplay_Reflect = m_Gameplay.FindAction("Reflect", throwIfNotFound: true);
             m_Gameplay_Slowmo = m_Gameplay.FindAction("Slowmo", throwIfNotFound: true);
+            // Menu
+            m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+            m_Menu_Left = m_Menu.FindAction("Left", throwIfNotFound: true);
+            m_Menu_Right = m_Menu.FindAction("Right", throwIfNotFound: true);
+            m_Menu_Confirm = m_Menu.FindAction("Confirm", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -322,6 +414,55 @@ namespace Echo
             }
         }
         public GameplayActions @Gameplay => new GameplayActions(this);
+
+        // Menu
+        private readonly InputActionMap m_Menu;
+        private IMenuActions m_MenuActionsCallbackInterface;
+        private readonly InputAction m_Menu_Left;
+        private readonly InputAction m_Menu_Right;
+        private readonly InputAction m_Menu_Confirm;
+        public struct MenuActions
+        {
+            private @GameInput m_Wrapper;
+            public MenuActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Left => m_Wrapper.m_Menu_Left;
+            public InputAction @Right => m_Wrapper.m_Menu_Right;
+            public InputAction @Confirm => m_Wrapper.m_Menu_Confirm;
+            public InputActionMap Get() { return m_Wrapper.m_Menu; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+            public void SetCallbacks(IMenuActions instance)
+            {
+                if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+                {
+                    @Left.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnLeft;
+                    @Left.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnLeft;
+                    @Left.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnLeft;
+                    @Right.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnRight;
+                    @Right.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnRight;
+                    @Right.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnRight;
+                    @Confirm.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnConfirm;
+                    @Confirm.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnConfirm;
+                    @Confirm.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnConfirm;
+                }
+                m_Wrapper.m_MenuActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Left.started += instance.OnLeft;
+                    @Left.performed += instance.OnLeft;
+                    @Left.canceled += instance.OnLeft;
+                    @Right.started += instance.OnRight;
+                    @Right.performed += instance.OnRight;
+                    @Right.canceled += instance.OnRight;
+                    @Confirm.started += instance.OnConfirm;
+                    @Confirm.performed += instance.OnConfirm;
+                    @Confirm.canceled += instance.OnConfirm;
+                }
+            }
+        }
+        public MenuActions @Menu => new MenuActions(this);
         private int m_KeyboardSchemeIndex = -1;
         public InputControlScheme KeyboardScheme
         {
@@ -346,6 +487,12 @@ namespace Echo
             void OnInteract(InputAction.CallbackContext context);
             void OnReflect(InputAction.CallbackContext context);
             void OnSlowmo(InputAction.CallbackContext context);
+        }
+        public interface IMenuActions
+        {
+            void OnLeft(InputAction.CallbackContext context);
+            void OnRight(InputAction.CallbackContext context);
+            void OnConfirm(InputAction.CallbackContext context);
         }
     }
 }
