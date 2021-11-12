@@ -1165,6 +1165,7 @@ GameObject:
   - component: {fileID: 55676311}
   - component: {fileID: 55676312}
   - component: {fileID: 55676313}
+  - component: {fileID: 55676314}
   m_Layer: 0
   m_Name: Room 5
   m_TagString: Untagged
@@ -1229,6 +1230,24 @@ MonoBehaviour:
   virtualCamera: {fileID: 716468030}
   display: {fileID: 1559714080}
   nextScene: Level2
+--- !u!114 &55676314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55676310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16b3e6213bd787479ce6b1428ac9cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveSystem: {fileID: 11400000, guid: 51ad2174f5669114cb19db8f6cbc5abc, type: 2}
+  setMaxHealth: 1
+  maxHealth: 5
+  levelNumber: 1
+  player: {fileID: 1023065064}
+  room: {fileID: 55676312}
 --- !u!1 &70899535
 GameObject:
   m_ObjectHideFlags: 0

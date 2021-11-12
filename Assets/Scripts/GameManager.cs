@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 using Echo.Input;
+using Echo.Save;
 using Echo.UI;
 
 namespace Echo{
@@ -11,6 +12,7 @@ namespace Echo{
         public static GameManager Instance{ get; private set; }
 
         [SerializeField] private InputReader inputReader;
+        [SerializeField] private SaveSystem saveSystem;
         [SerializeField] private LoadingScreen loadingScreen;
 
         private bool isChangingScene;
@@ -22,6 +24,7 @@ namespace Echo{
                 return;
             }
             Instance = this;
+            saveSystem.Load();
             if(SceneManager.sceneCount > 1){
                 lastScene = SceneManager.GetActiveScene().name;
             }else{

@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
+  saveSystem: {fileID: 11400000, guid: 51ad2174f5669114cb19db8f6cbc5abc, type: 2}
   loadingScreen: {fileID: 501527669}
 --- !u!4 &987379903
 Transform:

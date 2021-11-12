@@ -2,10 +2,12 @@
 using UnityEngine;
 using UniRx;
 using Echo.Item;
+using Echo.Save;
 
 namespace Echo.Player{
     public sealed class PlayerBase : MonoBehaviour{
 
+        [SerializeField] private SaveSystem saveSystem;
         [SerializeField] private IntReactiveProperty health;
         [SerializeField] private IntReactiveProperty level;
         [SerializeField] private int maxHealth;
@@ -48,6 +50,8 @@ namespace Echo.Player{
             if(!isAlive) return;
             isAlive = false;
             onDeath.OnNext(Unit.Default);
+            saveSystem.SaveData.health = saveSystem.SaveData.maxHealth;
+            saveSystem.Save();
         }
 
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
@@ -101,6 +105,8 @@ namespace Echo.Player{
             movement = GetComponent<PlayerMovement>();
             reflectBullet = GetComponent<PlayerReflectBullet>();
             slowmo = GetComponent<PlayerSlowmo>();
+            maxHealth = saveSystem.SaveData.maxHealth;
+            health.Value = saveSystem.SaveData.health;
         }
 
         private void Start(){

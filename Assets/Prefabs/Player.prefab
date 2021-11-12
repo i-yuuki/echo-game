@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e341906a8622e444cbcd3e8b5922e506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveSystem: {fileID: 11400000, guid: 51ad2174f5669114cb19db8f6cbc5abc, type: 2}
   health:
     value: 4
   level:
