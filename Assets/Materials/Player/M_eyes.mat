@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_hair
+  m_Name: M_eyes
   m_Shader: {fileID: 4800000, guid: 766736548846cdf459a9766614dcccab, type: 3}
   m_ShaderKeywords: _ _EMISSIVE_SIMPLE _IS_ANGELRING_OFF _IS_CLIPPING_OFF _IS_OUTLINE_CLIPPING_NO
     _OUTLINE_NML
@@ -23,7 +23,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: 6f54c068124a6a649ad9c38b34f742bf, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0b0ac194e13c774b931be8ce8a6ec23, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
@@ -63,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2973e064cd380774ebb4b3b6fc09384e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f7255bde53d31c49b42227c3c253da1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCap_Sampler:
@@ -125,7 +125,7 @@ Material:
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.5
+    - _1st_ShadeColor_Step: 0.25
     - _2nd_ShadeColor_Feather: 0.0001
     - _2nd_ShadeColor_Step: 0
     - _ARSampler_AlphaOn: 0
@@ -137,7 +137,7 @@ Material:
     - _Ap_RimLight_FeatherOff: 0
     - _Ap_RimLight_Power: 0.1
     - _AutoRenderQueue: 1
-    - _BaseColor_Step: 0.5
+    - _BaseColor_Step: 0.25
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 0
     - _Blend: 0

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_hair
+  m_Name: M_shoes
   m_Shader: {fileID: 4800000, guid: 766736548846cdf459a9766614dcccab, type: 3}
   m_ShaderKeywords: _ _EMISSIVE_SIMPLE _IS_ANGELRING_OFF _IS_CLIPPING_OFF _IS_OUTLINE_CLIPPING_NO
     _OUTLINE_NML
@@ -23,7 +23,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: 6f54c068124a6a649ad9c38b34f742bf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 30cb7b9088c8f0849a7e18f489913a9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
@@ -63,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2973e064cd380774ebb4b3b6fc09384e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d9aa74afa6602604faa167e92c1e7b0e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCap_Sampler:
