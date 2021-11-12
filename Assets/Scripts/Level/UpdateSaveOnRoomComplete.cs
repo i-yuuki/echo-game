@@ -15,6 +15,7 @@ namespace Echo.Level{
         [SerializeField] private bool setMaxHealth;
         [SerializeField] private int maxHealth;
         [SerializeField] private int levelNumber;
+        [SerializeField] private bool unlockFinalBoss;
         [SerializeField] private PlayerBase player;
         [SerializeField] private Room room;
 
@@ -25,6 +26,9 @@ namespace Echo.Level{
                     saveSystem.SaveData.maxHealth = Mathf.Max(saveSystem.SaveData.maxHealth, maxHealth);
                 }
                 saveSystem.SaveData.levelsCompleted = Mathf.Max(saveSystem.SaveData.levelsCompleted, levelNumber);
+                if(unlockFinalBoss){
+                    saveSystem.SaveData.isFinalBossUnlocked = true;
+                }
                 saveSystem.Save();
             }).AddTo(this);
         }

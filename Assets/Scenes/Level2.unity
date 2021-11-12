@@ -837,6 +837,7 @@ MonoBehaviour:
   setMaxHealth: 1
   maxHealth: 6
   levelNumber: 2
+  unlockFinalBoss: 1
   player: {fileID: 680440692}
   room: {fileID: 116700697}
 --- !u!1 &137036657

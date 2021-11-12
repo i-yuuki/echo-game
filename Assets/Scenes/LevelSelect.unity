@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
+  isFinalBoss: 0
   sceneName: Level2
   container: {fileID: 47342277}
 --- !u!225 &47342277
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
+  isFinalBoss: 1
   sceneName: Level5
   container: {fileID: 294201684}
 --- !u!225 &294201684
@@ -760,6 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
+  isFinalBoss: 0
   sceneName: Level1
   container: {fileID: 505407007}
 --- !u!225 &505407007
@@ -1910,6 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
+  saveSystem: {fileID: 11400000, guid: 51ad2174f5669114cb19db8f6cbc5abc, type: 2}
   levels:
   - {fileID: 505407006}
   - {fileID: 47342276}

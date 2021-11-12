@@ -2,11 +2,13 @@
 using Cysharp.Threading.Tasks;
 using UniRx;
 using Echo.Input;
+using Echo.Save;
 
 namespace Echo.UI.LevelSelect{
     public sealed class LevelSelectScene : MonoBehaviour{
 
         [SerializeField] private InputReader inputReader;
+        [SerializeField] private SaveSystem saveSystem;
         [SerializeField] private LevelSelectLevel[] levels;
         [SerializeField] private LevelSelectIndicator[] indicators;
         [SerializeField] private GameObject iconPrev;
@@ -18,7 +20,7 @@ namespace Echo.UI.LevelSelect{
             inputReader.EnableMenuInput();
             inputReader.OnMenuConfirm.Subscribe(_ => {
                 var level = levels[levelIdx];
-                if(level.IsSelectable){
+                if(level.IsSelectable && (!level.IsFinalBoss || saveSystem.SaveData.isFinalBossUnlocked)){
                     GameManager.Instance.LoadScene(level.SceneName);
                 }
             }).AddTo(this);
