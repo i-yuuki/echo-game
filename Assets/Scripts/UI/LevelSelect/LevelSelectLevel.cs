@@ -6,12 +6,12 @@ namespace Echo.UI.LevelSelect{
     public sealed class LevelSelectLevel : MonoBehaviour{
 
         [SerializeField] private bool isSelectable;
-        [SerializeField] private bool isFinalBoss;
+        [SerializeField] private int levelNumber;
         [SerializeField] private string sceneName;
         [SerializeField] private CanvasGroup container;
 
         public bool IsSelectable => isSelectable;
-        public bool IsFinalBoss => isFinalBoss;
+        public int LevelNumber => levelNumber;
         public string SceneName => sceneName;
 
         public void Show(){

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UniRx;
 using Echo.Audio;
 using Echo.Input;
@@ -17,17 +18,22 @@ namespace Echo.UI.LevelSelect{
         [SerializeField] private LevelSelectIndicator[] indicators;
         [SerializeField] private GameObject iconPrev;
         [SerializeField] private GameObject iconNext;
+        [SerializeField] private CanvasGroup labelLevelLocked;
 
         private int levelIdx;
+
+        private bool IsLevelUnlocked(int levelNumber){
+            return !saveSystem || saveSystem.SaveData.levelsCompleted + 1 >= levelNumber;
+        }
 
         private void Start(){
             inputReader.EnableMenuInput();
             inputReader.OnMenuConfirm.Subscribe(_ => {
                 var level = levels[levelIdx];
-                if(level.IsSelectable && (!level.IsFinalBoss || saveSystem.SaveData.isFinalBossUnlocked)){
+                if(level.IsSelectable && IsLevelUnlocked(level.LevelNumber)){
                     GameManager.Instance.LoadScene(level.SceneName);
+                    channel.Request(seConfirm);
                 }
-                channel.Request(seConfirm);
             }).AddTo(this);
             inputReader.OnMenuLeft.Subscribe(_ => SelectLevel(levelIdx - 1)).AddTo(this);
             inputReader.OnMenuRight.Subscribe(_ => SelectLevel(levelIdx + 1)).AddTo(this);
@@ -41,12 +47,14 @@ namespace Echo.UI.LevelSelect{
             int prevLevelIdx = this.levelIdx;
             this.levelIdx = levelIdx;
 
+            var level = levels[levelIdx];
             levels[prevLevelIdx].Hide();
-            levels[levelIdx].Show();
+            level.Show();
             indicators[prevLevelIdx].IsOn = false;
             indicators[levelIdx].IsOn = true;
             iconPrev.SetActive(levelIdx > 0);
             iconNext.SetActive(levelIdx < levels.Length - 1);
+            labelLevelLocked.DOFade(IsLevelUnlocked(level.LevelNumber) ? 0 : 1, 0.15f);
 
             channel.Request(seSelect);
         }
