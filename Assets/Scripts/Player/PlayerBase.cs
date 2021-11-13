@@ -52,6 +52,9 @@ namespace Echo.Player{
             onDeath.OnNext(Unit.Default);
             saveSystem.SaveData.health = saveSystem.SaveData.maxHealth;
             saveSystem.Save();
+            foreach(var bullet in FindObjectsOfType<BulletBase>()){
+                Destroy(bullet.gameObject);
+            }
         }
 
         public void ReflectBullet(BulletBase bullet, ReflectType reflectType){
