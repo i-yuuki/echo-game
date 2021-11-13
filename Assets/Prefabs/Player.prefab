@@ -93,6 +93,7 @@ MonoBehaviour:
     value: 0
   maxHealth: 4
   maxLevel: 5
+  halfMaxHealth: 0
   noDamageDuration: 0.5
 --- !u!114 &3682477567055064201
 MonoBehaviour:
@@ -130,7 +131,7 @@ MonoBehaviour:
   ringWidthLevel: 0
   ringWidthPerLevel: 0.1
   bulletAcceleration: 0.5
-  playerMovementRatio: 0.5
+  playerMovementRatio: 0.48
   cooldownDuration: 0.5
   slowmoCharge: 0.03
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
