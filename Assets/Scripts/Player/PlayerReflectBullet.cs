@@ -12,7 +12,7 @@ namespace Echo.Player{
         [SerializeField] private PlayerBase player;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
-        [SerializeField] private int ringWidthLevel;
+        [SerializeField] private IntReactiveProperty ringWidthLevel;
         [SerializeField] private float ringWidthPerLevel;
         [SerializeField] private float bulletAcceleration;
         [Range(0, 1)]
@@ -22,6 +22,7 @@ namespace Echo.Player{
         [SerializeField] private InputReader inputReader;
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
+        [SerializeField] private Transform[] ringObjects;
         [SerializeField] private Animator animator;
         [SerializeField] private ParticleSystem reflectEffect;
         [SerializeField] private AudioCue se;
@@ -35,10 +36,11 @@ namespace Echo.Player{
             set => type.Value = value;
         }
         public int RingWidthLevel{
-            get => ringWidthLevel;
-            set => ringWidthLevel = value;
+            get => ringWidthLevel.Value;
+            set => ringWidthLevel.Value = value;
         }
 
+        private float ReflectRadius => ringRadius + ringWidth / 2 + RingWidthLevel * ringWidthPerLevel;
         public IObservable<ReflectType> OnReflectTypeChange => type;
 
         private void Reset(){
@@ -47,6 +49,16 @@ namespace Echo.Player{
 
         private void Awake(){
             inputReader.OnReflect.Subscribe(_  => ReflectBullets()).AddTo(this);
+        }
+
+        private void Start(){
+            ringWidthLevel.Subscribe(_ => {
+                float s = ReflectRadius;
+                var scale = new Vector3(s, s, s);
+                foreach(var obj in ringObjects){
+                    obj.localScale = scale;
+                }
+            });
         }
 
         private void Update(){
@@ -59,7 +71,7 @@ namespace Echo.Player{
             if(!player) return;
             if(cooldownTime > 0) return;
             bool reflected = false;
-            float radius = ringRadius + ringWidth / 2 + ringWidthLevel * ringWidthPerLevel;
+            float radius = ReflectRadius;
             foreach(Collider collider in Physics.OverlapSphere(transform.position, radius)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
