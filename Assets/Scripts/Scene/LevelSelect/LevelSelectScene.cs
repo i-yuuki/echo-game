@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Cysharp.Threading.Tasks;
 using UniRx;
+using Echo.Audio;
 using Echo.Input;
 using Echo.Save;
 
@@ -8,6 +9,9 @@ namespace Echo.UI.LevelSelect{
     public sealed class LevelSelectScene : MonoBehaviour{
 
         [SerializeField] private InputReader inputReader;
+        [SerializeField] private AudioChannel channel;
+        [SerializeField] private AudioCue seSelect;
+        [SerializeField] private AudioCue seConfirm;
         [SerializeField] private SaveSystem saveSystem;
         [SerializeField] private LevelSelectLevel[] levels;
         [SerializeField] private LevelSelectIndicator[] indicators;
@@ -23,6 +27,7 @@ namespace Echo.UI.LevelSelect{
                 if(level.IsSelectable && (!level.IsFinalBoss || saveSystem.SaveData.isFinalBossUnlocked)){
                     GameManager.Instance.LoadScene(level.SceneName);
                 }
+                channel.Request(seConfirm);
             }).AddTo(this);
             inputReader.OnMenuLeft.Subscribe(_ => SelectLevel(levelIdx - 1)).AddTo(this);
             inputReader.OnMenuRight.Subscribe(_ => SelectLevel(levelIdx + 1)).AddTo(this);
@@ -42,6 +47,8 @@ namespace Echo.UI.LevelSelect{
             indicators[levelIdx].IsOn = true;
             iconPrev.SetActive(levelIdx > 0);
             iconNext.SetActive(levelIdx < levels.Length - 1);
+
+            channel.Request(seSelect);
         }
 
     }
