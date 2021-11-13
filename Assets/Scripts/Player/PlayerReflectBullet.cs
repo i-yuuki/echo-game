@@ -23,6 +23,7 @@ namespace Echo.Player{
         [SerializeField] private PlayerBullet prefabBullet;
         [SerializeField] private PlayerBullet prefabPiercingBullet;
         [SerializeField] private Animator animator;
+        [SerializeField] private ParticleSystem reflectEffect;
         [SerializeField] private AudioCue se;
         [SerializeField] private AudioChannel seChannel;
 
@@ -70,6 +71,8 @@ namespace Echo.Player{
                 cooldownTime = cooldownDuration;
                 seChannel.Request(se);
                 animator.SetTrigger("Reflect");
+                reflectEffect.time = 0;
+                reflectEffect.Play();
             }
         }
 
