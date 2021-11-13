@@ -743,6 +743,7 @@ GameObject:
   - component: {fileID: 116700698}
   - component: {fileID: 116700699}
   - component: {fileID: 116700700}
+  - component: {fileID: 116700701}
   m_Layer: 0
   m_Name: Room5
   m_TagString: Untagged
@@ -840,6 +841,22 @@ MonoBehaviour:
   unlockFinalBoss: 1
   player: {fileID: 680440692}
   room: {fileID: 116700697}
+--- !u!114 &116700701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116700695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de62b7263cac334e9b8fc46ef406bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: a282011160525394dbe80bbebda833f3, type: 2}
+  channel: {fileID: 11400000, guid: 09f2318ca5386d94e9835fb99de54e4c, type: 2}
+  room: {fileID: 116700697}
+  stopOnComplete: 1
 --- !u!1 &137036657
 GameObject:
   m_ObjectHideFlags: 0

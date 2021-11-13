@@ -1166,6 +1166,7 @@ GameObject:
   - component: {fileID: 55676312}
   - component: {fileID: 55676313}
   - component: {fileID: 55676314}
+  - component: {fileID: 55676315}
   m_Layer: 0
   m_Name: Room 5
   m_TagString: Untagged
@@ -1246,8 +1247,25 @@ MonoBehaviour:
   setMaxHealth: 1
   maxHealth: 5
   levelNumber: 1
+  unlockFinalBoss: 0
   player: {fileID: 1023065064}
   room: {fileID: 55676312}
+--- !u!114 &55676315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55676310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de62b7263cac334e9b8fc46ef406bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: ca036b6a201fbab4888a0bca833054b7, type: 2}
+  channel: {fileID: 11400000, guid: 09f2318ca5386d94e9835fb99de54e4c, type: 2}
+  room: {fileID: 55676312}
+  stopOnComplete: 1
 --- !u!1 &70899535
 GameObject:
   m_ObjectHideFlags: 0
