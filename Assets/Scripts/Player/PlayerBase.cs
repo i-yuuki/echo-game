@@ -12,6 +12,7 @@ namespace Echo.Player{
         [SerializeField] private IntReactiveProperty level;
         [SerializeField] private int maxHealth;
         [SerializeField] private int maxLevel;
+        [SerializeField] private bool halfMaxHealth;
         [SerializeField] private float noDamageDuration;
         private PlayerReflectBullet reflectBullet;
         private PlayerSlowmo slowmo;
@@ -109,7 +110,10 @@ namespace Echo.Player{
             reflectBullet = GetComponent<PlayerReflectBullet>();
             slowmo = GetComponent<PlayerSlowmo>();
             maxHealth = saveSystem.SaveData.maxHealth;
-            health.Value = saveSystem.SaveData.health;
+            if(halfMaxHealth){
+                maxHealth = Mathf.Max(1, maxHealth / 2);
+            }
+            health.Value = maxHealth;
         }
 
         private void Start(){
