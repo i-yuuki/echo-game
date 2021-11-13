@@ -166,12 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc2c0de03e43a6458650a3285cbf55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
+  bgmEffect: {fileID: 11400000, guid: 07963cd6c0eadbd498f805c6849f9d0f, type: 2}
   charge:
     value: 0
   minCharge: 0.25
   timeScale: 0.5
   consumption: 0.08
-  inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
 --- !u!1001 &2358817135499717714
 PrefabInstance:
   m_ObjectHideFlags: 0

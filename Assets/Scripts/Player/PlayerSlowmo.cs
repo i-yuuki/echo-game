@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UniRx;
+using Echo.Audio;
 using Echo.Input;
 
 namespace Echo.Player{
@@ -8,11 +9,12 @@ namespace Echo.Player{
     public sealed class PlayerSlowmo : MonoBehaviour{
         
         private PlayerBase player;
+        [SerializeField] private InputReader inputReader;
+        [SerializeField] private AudioEffectChannel bgmEffect;
         [SerializeField] private FloatReactiveProperty charge;
         [SerializeField] private float minCharge;
         [SerializeField] private float timeScale;
         [SerializeField] private float consumption;
-        [SerializeField] private InputReader inputReader;
 
         private readonly ReactiveProperty<bool> isInSlowmo = new ReactiveProperty<bool>();
         public float Charge{
@@ -44,11 +46,9 @@ namespace Echo.Player{
                 if(charge.Value < minCharge) return;
             }
             isInSlowmo.Value = !isInSlowmo.Value;
-            if(isInSlowmo.Value){
-                Time.timeScale = timeScale;
-                // maybe control BGM here
-            }else{
-                Time.timeScale = 1;
+            Time.timeScale = isInSlowmo.Value ? timeScale : 1;
+            if(bgmEffect){
+                bgmEffect.RequestSlowmo(isInSlowmo.Value);
             }
         }
 
