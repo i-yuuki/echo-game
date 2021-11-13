@@ -25,7 +25,9 @@ namespace Echo.Level{
                     Destroy(bullet.gameObject);
                 }
                 player.StopSlowmo();
-                exit.Open();
+                if(exit){
+                    exit.Open();
+                }
             }).AddTo(this);
         }
 
