@@ -15,9 +15,10 @@ namespace Echo.Save{
 
         public void Load(){
             Debug.Log($"Loading game progress from {FilePath}");
+            saveData = new SaveData();
             try{
                 using(var stream = new StreamReader(FilePath)){
-                    saveData = JsonUtility.FromJson<SaveData>(stream.ReadToEnd());
+                    JsonUtility.FromJsonOverwrite(stream.ReadToEnd(), saveData);
                 }
             }catch(Exception ex){
                 Debug.LogError($"Failed to load game progress! (New game?) {ex}");
