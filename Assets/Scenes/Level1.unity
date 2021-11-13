@@ -1226,6 +1226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 8efdfc1134b96144b96c4870331ec881, type: 2}
+  se: {fileID: 11400000, guid: 46e7e0c11eb6f504e8cb1e26b63d8241, type: 2}
+  channel: {fileID: 11400000, guid: a0098505050a46543bbba361dd4b56c5, type: 2}
   slowmoDuration: 1.5
   enemies: {fileID: 622519098}
   virtualCamera: {fileID: 716468030}
