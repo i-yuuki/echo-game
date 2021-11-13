@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 using UniRx;
 using Echo.Item;
 using Echo.Save;
@@ -17,6 +19,7 @@ namespace Echo.Player{
         private PlayerReflectBullet reflectBullet;
         private PlayerSlowmo slowmo;
         private PlayerMovement movement;
+        private Material[] materials;
 
         private bool isAlive;
         private float noDamageTime;
@@ -44,6 +47,10 @@ namespace Echo.Player{
             noDamageTime = noDamageDuration;
             if(Health <= 0){
                 Die();
+            }
+            foreach(var m in materials){
+                Debug.Log(m);
+                m.DOColor(Color.black, "_Emissive_Color", 0.3f).From(Color.red);
             }
         }
 
@@ -114,6 +121,7 @@ namespace Echo.Player{
                 maxHealth = Mathf.Max(1, maxHealth / 2);
             }
             health.Value = maxHealth;
+            materials = GetComponentsInChildren<Renderer>().Select(r => r.material).ToArray();
         }
 
         private void Start(){
