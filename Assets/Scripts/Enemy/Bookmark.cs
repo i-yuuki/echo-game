@@ -13,15 +13,24 @@ namespace Echo.Enemy{
         [SerializeField] private float speed;
         [SerializeField] private Rigidbody rb;
 
+        private bool isAwake;
+        private PlayerBase lastPlayerAttacked;
+
         private void Start(){
-            enemySensePlayer.OnPlayerFound.Subscribe(player => {
-                rb.velocity = (player.transform.position - transform.position).WithY(0).normalized * speed;
-                transform.LookAt(player.transform.position);
-            }).AddTo(this);
+            isAwake = false;
+            enemySensePlayer.OnPlayerFound.Subscribe(player => AttackTowards(player)).AddTo(this);
+            enemySensePlayer.OnPlayerLost.Subscribe(player => AttackTowards(lastPlayerAttacked)).AddTo(this);
             collisionWithPlayer.OnPlayerCollide.Subscribe(player => {
                 enemy.Die();
                 player.Damage(1);
             }).AddTo(this);
+        }
+
+        private void AttackTowards(PlayerBase player){
+            isAwake = true;
+            lastPlayerAttacked = player;
+            rb.velocity = (player.transform.position - transform.position).WithY(0).normalized * speed;
+            transform.LookAt(player.transform.position);
         }
 
         void IPlayerBulletAttackable.OnPlayerBulletHit(PlayerBullet bullet){
@@ -33,7 +42,9 @@ namespace Echo.Enemy{
         }
 
         private void OnCollisionEnter(Collision collision){
-            enemy.Die();
+            if(isAwake){
+                AttackTowards(lastPlayerAttacked);
+            }
         }
 
     }
