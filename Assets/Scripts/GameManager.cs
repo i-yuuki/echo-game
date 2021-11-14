@@ -25,6 +25,8 @@ namespace Echo{
             }
             Instance = this;
             saveSystem.Load();
+            saveSystem.SaveData.playCount ++;
+            saveSystem.Save();
             if(SceneManager.sceneCount > 1){
                 lastScene = SceneManager.GetActiveScene().name;
             }else{
