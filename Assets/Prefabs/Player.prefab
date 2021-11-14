@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3682477567055064205}
+  reflectOffset: {x: 0, y: 0.5, z: 0}
   ringRadius: 0.75
   ringWidth: 0.6
   ringWidthLevel:

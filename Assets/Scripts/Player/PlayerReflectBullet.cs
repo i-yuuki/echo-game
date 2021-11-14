@@ -10,6 +10,7 @@ namespace Echo.Player{
     public sealed class PlayerReflectBullet : MonoBehaviour{
         
         [SerializeField] private PlayerBase player;
+        [SerializeField] private Vector3 reflectOffset;
         [SerializeField] private float ringRadius;
         [SerializeField] private float ringWidth;
         [SerializeField] private IntReactiveProperty ringWidthLevel;
@@ -72,7 +73,7 @@ namespace Echo.Player{
             if(cooldownTime > 0) return;
             bool reflected = false;
             float radius = ReflectRadius;
-            foreach(Collider collider in Physics.OverlapSphere(transform.position, radius)){
+            foreach(Collider collider in Physics.OverlapSphere(transform.position + reflectOffset, radius)){
                 IReflectable reflectable = collider.GetComponent<IReflectable>();
                 if(!(reflectable is MonoBehaviour)) continue; // nullチェックも兼ねる
                 var monoReflectable = reflectable as MonoBehaviour;
