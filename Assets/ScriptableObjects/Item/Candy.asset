@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u3084\u308B\u304D\u30AD\u30E3\u30F3\u30C7\u30A3\u30FC"
   icon: {fileID: 21300000, guid: 22d218feff624a9478ba3f6e4fa7116d, type: 3}
+  nameImage: {fileID: 21300000, guid: b11b4f0e5764c7c4b913777c160d25f1, type: 3}
   description: "\u4F53\u529B\u3092\u56DE\u5FA9\u3059\u308B"
   effect: 1
