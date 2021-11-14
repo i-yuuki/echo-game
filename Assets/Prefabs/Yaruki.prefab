@@ -133,7 +133,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &360145718689082639
 MonoBehaviour:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2820381061038223598}
   enemySensePlayer: {fileID: 360145718689082639}
-  attackInterval: 4
+  attackInterval: 2
   bulletSpeed: 4
   shootPosition: {fileID: 8369443818270971542}
   animator: {fileID: 7773610566456088342}
