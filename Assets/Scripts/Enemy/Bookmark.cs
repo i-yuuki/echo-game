@@ -32,5 +32,9 @@ namespace Echo.Enemy{
             enemy.Damage(1);
         }
 
+        private void OnCollisionEnter(Collision collision){
+            enemy.Die();
+        }
+
     }
 }
