@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -12,7 +12,7 @@ namespace Echo.UI.Item{
 
         [SerializeField] private ItemListItem[] items;
         [SerializeField] private CanvasGroup container;
-        [SerializeField] private TextMeshProUGUI labelName;
+        [SerializeField] private Image labelName;
         [SerializeField] private TextMeshProUGUI labelDescription;
 
         private void Awake(){
@@ -48,7 +48,7 @@ namespace Echo.UI.Item{
         }
 
         private void DisplayItemInfo(ItemInfo itemInfo){
-            labelName.text = itemInfo.Name;
+            labelName.sprite = itemInfo.NameImage;
             labelDescription.text = itemInfo.Description;
         }
 
