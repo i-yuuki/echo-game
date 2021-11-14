@@ -155,7 +155,7 @@ MonoBehaviour:
   enemySensePlayer: {fileID: 8419084915841849480}
   attackInterval: 4
   bulletCount: 10
-  bulletSpread: 7
+  bulletSpread: 12
   bulletSpeed: 4
   shootPosition: {fileID: 2057726986808992174}
   animator: {fileID: 3079498100652336814}
