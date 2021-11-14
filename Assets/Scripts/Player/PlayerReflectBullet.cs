@@ -89,7 +89,7 @@ namespace Echo.Player{
         }
 
         public void ToggleReflectType(){
-            ReflectType = ReflectType == ReflectType.SPREADING ? ReflectType.PIERCING : ReflectType.SPREADING;
+            ReflectType = ReflectType == ReflectType.PIERCING ? ReflectType.SPREADING : ReflectType.PIERCING;
         }
 
         public void ReflectBullet(BulletBase bulletToReflect, ReflectType reflectType){
