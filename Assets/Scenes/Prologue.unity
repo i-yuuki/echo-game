@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSystem: {fileID: 11400000, guid: 51ad2174f5669114cb19db8f6cbc5abc, type: 2}
+  bgmChannel: {fileID: 11400000, guid: 09f2318ca5386d94e9835fb99de54e4c, type: 2}
   delay: 0.5
   nextScene: Level1
   video: {fileID: 923111606}
