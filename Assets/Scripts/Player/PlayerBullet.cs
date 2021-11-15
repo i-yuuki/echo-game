@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Echo.Extensions;
+using Echo.Misc;
 
 namespace Echo.Player{
     [RequireComponent(typeof(BulletBase))]
@@ -7,6 +7,7 @@ namespace Echo.Player{
 
         [SerializeField] private BulletBase bullet;
         [SerializeField] private bool isPiercing;
+        [SerializeField] private MaterialFlash flash;
 
         public Vector3 Direction{
             get => bullet.Direction;
@@ -49,6 +50,12 @@ namespace Echo.Player{
 
         void IReflectable.OnReflect(PlayerBase player, ReflectType reflectType){
             player.ReflectBullet(bullet, reflectType);
+        }
+
+        public void Flash(){
+            if(flash){
+                flash.Flash();
+            }
         }
 
     }

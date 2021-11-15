@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using DG.Tweening;
 using UniRx;
 using Echo.Audio;
 using Echo.Input;
@@ -103,12 +102,7 @@ namespace Echo.Player{
                     bullet.Direction = -bulletToReflect.Direction;
                 }
                 bullet.Speed = bulletToReflect.Speed + bulletAcceleration;
-                var r = bullet.GetComponentInChildren<Renderer>();
-                if(r){
-                    var mat = r.material;
-                    mat.DOComplete();
-                    mat.DOColor(mat.GetColor("_EmissionColor"), "_EmissionColor", 0.3f).From(new Color(2, 2, 2, 1));
-                }
+                bullet.Flash();
                 return bullet;
             }
             Destroy(bulletToReflect.gameObject);

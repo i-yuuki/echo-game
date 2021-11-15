@@ -50,6 +50,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &956260016305657098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205818007232024835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e978f5377050eb84fabf500016404473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertyName: _Emissive_Color
+  color: {r: 1, g: 0, b: 0, a: 0}
+  duration: 0.3
 --- !u!1 &3682477567055064199
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +143,7 @@ MonoBehaviour:
   maxLevel: 5
   halfMaxHealth: 0
   noDamageDuration: 0.5
+  flashOnDamage: {fileID: 956260016305657098}
 --- !u!114 &3682477567055064201
 MonoBehaviour:
   m_ObjectHideFlags: 0

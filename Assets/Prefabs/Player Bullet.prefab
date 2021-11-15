@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 2361966717575998458}
   - component: {fileID: 2361966717575998459}
   - component: {fileID: 1489313092549426890}
+  - component: {fileID: 3890070630892607551}
   - component: {fileID: 9035354265111761429}
   - component: {fileID: 455717778730015856}
   m_Layer: 8
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1b3ab0b590a5f44988aa02b6f77682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3890070630892607551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361966717575998462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e978f5377050eb84fabf500016404473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertyName: _EmissionColor
+  color: {r: 2, g: 2, b: 2, a: 0}
+  duration: 0.3
 --- !u!114 &9035354265111761429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +202,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 9035354265111761429}
   isPiercing: 0
+  flash: {fileID: 3890070630892607551}

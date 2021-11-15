@@ -12,7 +12,7 @@ namespace Echo.Misc{
 
         private Material[] materials;
 
-        private void Start(){
+        private void Awake(){
             materials = GetComponentsInChildren<Renderer>().Select(r => r.material).ToArray();
         }
 
