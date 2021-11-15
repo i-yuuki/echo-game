@@ -193,7 +193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Version 1115.1 [Dev Build]\n(GCK2021\u307B\u307C\u30DE\u30B9\u30BF\u30FC\u7248)"
+  m_text: "Version 1115.2 [Dev Build]\n(GCK2021\u307B\u307C\u30DE\u30B9\u30BF\u30FC\u7248)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f78ef2a966b595469698fa852b72e97, type: 2}
   m_sharedMaterial: {fileID: -1000711326496024652, guid: 3f78ef2a966b595469698fa852b72e97,
