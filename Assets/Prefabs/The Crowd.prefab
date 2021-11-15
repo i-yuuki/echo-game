@@ -216,6 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4074098618019392522}
+  - component: {fileID: 4073935071217795273}
   - component: {fileID: 4457607725192516577}
   - component: {fileID: 7568878932635197572}
   m_Layer: 0
@@ -245,6 +246,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4073935071217795273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576602443587602568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e978f5377050eb84fabf500016404473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertyName: _Emissive_Color
+  color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0}
+  duration: 0.3
 --- !u!114 &4457607725192516577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +276,7 @@ MonoBehaviour:
   health:
     value: 15
   maxHealth: 15
+  flashOnDamage: {fileID: 4073935071217795273}
 --- !u!114 &7568878932635197572
 MonoBehaviour:
   m_ObjectHideFlags: 0
