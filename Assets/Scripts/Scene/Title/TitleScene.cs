@@ -3,11 +3,13 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Echo.Input;
+using Echo.Save;
 
 namespace Echo.Scene.Title{
     public sealed class TitleScene : MonoBehaviour{
 
         [SerializeField] private InputReader inputReader;
+        [SerializeField] private SaveSystem saveSystem;
         [SerializeField] private CanvasGroup container;
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonSettings;
@@ -24,6 +26,10 @@ namespace Echo.Scene.Title{
         }
 
         private async UniTaskVoid PlayAsync(){
+            if(saveSystem.SaveData.playCount == 1){
+                GameManager.Instance.LoadScene("Prologue");
+                return;
+            }
             await HideAsync();
             inputReader.EnableGameplayInput();
             // maybe display movement controls here
